@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Registration</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="teamForm" action="http://localhost:3000/team" method="POST" enctype="multipart/form-data">
+            <div class="team__name">
+                <label for="teamName">Team Name</label>
+                <input type="text" id="teamName" name="teamName" required>
+            </div>
+            <div class="team__origin">
+                <label for="teamOrigin">Team Origin</label>
+                <select name="teamOrigin" id="teamOrigin">
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Spain">Spain</option>
+                    <option value="England">England</option>
+                </select>
+            </div>
+            <div class="team__logo">
+                <label for="teamLogo">Team Logo</label>
+                <input type="text" id="teamLogo" name="teamLogo" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="status"></div>
+
+    </div>
+    <script src="addTeam.js"></script>
+</body>
+
+</html>

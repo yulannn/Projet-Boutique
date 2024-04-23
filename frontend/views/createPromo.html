@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer une réduction</title>
+</head>
+<body>
+<div class="container">
+    <form id="reductionForm" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="pourcentage" required>
+        </div>
+        <div class="form-group">
+            <label for="pourcentage">Pourcentage:</label>
+            <input type="number" id="pourcentage" name="pourcentage" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="start-date">Date de début:</label>
+            <input type="date" id="start-date" name="start-date">
+        </div>
+        <div class="form-group">
+            <label for="end-date">Date de fin:</label>
+            <input type="date" id="end-date" name="end-date" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="status"></div>
+    <script src="/public/js/addReduction.js"></script>
+</div>
+</body>
+</html>

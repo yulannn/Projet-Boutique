@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <form id="jerseyForm" action="http://localhost:3000/jerseys" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prix">Prix:</label>
+            <input type="number" id="prix" name="prix" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="taille">Taille:</label>
+            <input type="text" id="taille" name="taille">
+        </div>
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="matiere">Matière:</label>
+            <input type="text" id="matiere" name="matiere">
+        </div>
+        <div class="form-group">
+            <label for="couleur">Couleur:</label>
+            <input type="text" id="couleur" name="couleur">
+        </div>
+        <label for="team-select">Équipe:</label>
+        <select id="team-select">
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="status"></div>
+
+</div>
+<script src="/public/js/addJersey.js"></script>
+</body>
+</html>

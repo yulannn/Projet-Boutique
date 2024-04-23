@@ -16,8 +16,20 @@ app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/views/login.html');
 });
 
+app.get('/addjersey', (req, res) => {
+    res.sendFile(__dirname + '/views/addJersey.html');
+});
+
 app.get('/addteam', (req, res) => {
     res.sendFile(__dirname + '/views/addTeam.html');
+});
+
+app.get('/admin', (req, res) => {
+    res.sendFile(__dirname + '/views/adminPage.html');
+});
+
+app.get('/addreduction', (req, res) => {
+    res.sendFile(__dirname + '/views/createPromo.html');
 });
 
 const PORT = process.env.PORT || 8080;

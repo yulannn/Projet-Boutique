@@ -1,0 +1,34 @@
+h1 {
+    text-align: center;
+}
+
+.pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.affichage-tables {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: None;
+    margin:50px;
+    padding: 12px 20px;
+    color: #fff;
+}
+
+.pages a {
+    background-color: #007bff;
+}
+
+.affichage-tables a {
+    background-color: red;
+}

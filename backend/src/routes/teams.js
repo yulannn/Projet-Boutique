@@ -23,7 +23,7 @@ router.post('/team', (req, res) => {
     const teamOrigin = req.body.teamOrigin;
     const teamLogo = req.body.teamLogo;
 
-    console.log('Received:', { teamName, teamOrigin });
+    console.log('Received:', { teamName, teamOrigin, teamLogo });
 
     db.query('INSERT INTO Team (name, origin, logo_path) VALUES (?, ?, ?)', [teamName, teamOrigin, teamLogo], (err, results) => {
         if (err) {

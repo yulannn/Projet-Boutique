@@ -1,17 +1,17 @@
 {
-  "name": "boutique",
-  "version": "1.0.0",
   "type": "module",
-  "main": "src/app.js",
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/app.js"
+    "start": "nodemon api.mjs"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "^8.4.1",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "express": "^4.19.2",
     "mysql": "^2.18.1",
     "nodemon": "^3.1.0"

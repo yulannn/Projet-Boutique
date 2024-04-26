@@ -28,6 +28,10 @@ app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/views/adminPage.html');
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/views/index.html');
+});
+
 app.get('/addreduction', (req, res) => {
     res.sendFile(__dirname + '/views/createPromo.html');
 });

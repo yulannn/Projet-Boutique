@@ -7,7 +7,7 @@ router.post('/api/register', (req, res) => {
     console.log(req.body)
 
     const { email, first_name, last_name, password } = req.body;
-    const id_role = 1;
+    const id_role = 2;
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
     const hashedPassword = crypto.createHash('sha512').update(password).digest('hex');

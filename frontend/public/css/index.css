@@ -3,13 +3,21 @@
     src: url('../fonts/main-font.otf') format('opentype');
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
     overflow: hidden;
     background-color: #383838;
+    font-family: 'poppins', sans-serif;
 }
+
+.swiper {
+    width: 70%;
+}
+
+
 
 #tranding {
     position: absolute;
@@ -17,14 +25,14 @@ html, body {
     transform: translateX(-50%);
     bottom: 0;
     height: auto;
-    width: 60rem;
+    width: 100%;
 }
 
 .tranding-slide-content {
     text-align: center;
 }
 
-.tranding-slide-img{
+.tranding-slide-img {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,12 +40,10 @@ html, body {
 
 .team-name {
     color: white;
-    font-family: Arial, sans-serif;
 }
 
 .season-year {
     color: white;
-    font-family: Arial, sans-serif;
 }
 
 .swiper-slide-shadow-left,
@@ -48,11 +54,11 @@ html, body {
 /* Style de la page */
 
 h1 {
-    color: white;
-    font-family: main-font, sans-serif;
+    color: #82CCD1;
     text-align: center;
     font-size: 80px;
 }
+
 .background-container {
     position: relative;
     width: 100%;
@@ -67,8 +73,9 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/background-imgs/G2-BACKGROUND.png');
+    background-image: url('../img/background-imgs/dr10.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.06;
+    background-attachment: fixed;
+    opacity: 0.3;
 }

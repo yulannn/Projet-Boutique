@@ -75,12 +75,20 @@ box-icon {
     transform: scale(1.4);
 }
 
-.hero {
+.content-div {
+    overflow: hidden;
     height: 90vh;
     background: linear-gradient(to top right, #5f3dc4 0%, #090E16 50%);
+}
+
+.hero img {
+    transform: scale(1.2);
+    margin-top: 7vh;
+}
+.hero {
+    height: 40vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .burger-menu {
@@ -125,18 +133,19 @@ box-icon {
 
 @media only screen and (max-width: 430px) {
 
-
+    .hero img {
+        transform: scale(1);
+        margin-top: 5vh;
+    }
 
     .mid__header__content,
     .right__header__content {
         display: none;
-        /* Masquer le contenu de l'en-tête au centre et à gauche */
     }
 
 
     .left__header__content {
         width: 50%;
-        /* Ajuster la largeur si nécessaire */
     }
 
     .burger-menu {

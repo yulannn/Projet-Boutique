@@ -1,17 +1,21 @@
-var TrandingSlider = new Swiper('.tranding-slider', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    loop: true,
-    slidesPerView: 2,
-    coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 150,
-        modifier: 2.5,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    }
+document.querySelector('.burger-menu').addEventListener('click', function() {
+    var menu = document.querySelector('.navigation-menu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 });
+
+
+function openBurger(){
+    console.log('open')
+    var buttonBurger = document.querySelector('#burger-button');
+    buttonBurger.setAttribute('color', 'black');
+    buttonBurger.setAttribute('name', 'x');
+    buttonBurger.setAttribute('onClick', 'closeBurger()')
+}
+
+function closeBurger(){
+    console.log('close')
+    var buttonBurger = document.querySelector('#burger-button');
+    buttonBurger.setAttribute('color', 'white');
+    buttonBurger.setAttribute('name', 'menu');
+    buttonBurger.setAttribute('onClick', 'openBurger()')
+}

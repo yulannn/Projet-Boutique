@@ -10,83 +10,41 @@
 </head>
 
 <body>
-
-    <div class="background-container">
-        <div class="background-image"></div>
+    <!-- Ajouté juste après la balise <body> -->
+    <div class="navigation-menu">
+        <ul>
+            <li class="burger__liste"><a href="#home">Home</a></li>
+            <li class="burger__liste"><a href="#teams">Teams</a></li>
+            <li class="burger__liste"><a href="#shop">Shop</a></li>
+            <li class="burger__liste"><a href="#login">Login</a></li>
+        </ul>
     </div>
 
-    <section id="tranding">
-        <div class="container">
-            <div class="swiper tranding-slider">
-                <div class="swiper-wrapper">
-
-
-                    <div class="swiper-slide tranding-slide">
-                        <div class="tranding-slide-img">
-                            <img src="/public/img/jersey-images/BILIBILI-2024.png">
-                        </div>
-                        <div class="tranding-slide-content">
-                            <div class="tranding-slide-content-bottom">
-                                <h2 class="team-name"> BILIBILI </h2>
-                                <h2 class="season-year"> 2024 </h2>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide tranding-slide">
-                        <div class="tranding-slide-img">
-                            <img src="/public/img/jersey-images/HERETICS-2024.png">
-                        </div>
-                        <div class="tranding-slide-content">
-                            <div class="tranding-slide-content-bottom">
-                                <h2 class="team-name"> HERETICS </h2>
-                                <h2 class="season-year"> 2024 </h2>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide tranding-slide">
-                        <div class="tranding-slide-img">
-                            <img src="/public/img/jersey-images/KCORP-2024.png">
-                        </div>
-                        <div class="tranding-slide-content">
-                            <div class="tranding-slide-content-bottom">
-                                <h2 class="team-name"> KCORP </h2>
-                                <h2 class="season-year"> 2024 </h2>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="swiper-slide tranding-slide">
-                        <div class="tranding-slide-img">
-                            <img id="fnatic" src="/public/img/jersey-images/FNATIC-2024.png">
-                        </div>
-                        <div class="tranding-slide-content">
-                            <div class="tranding-slide-content-bottom">
-                                <h2 class="team-name"> FNATIC </h2>
-                                <h2 class="season-year"> 2024 </h2>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
+    <main class="container">
+        <header class="home__header">
+            <div class="left__header__content">
+                <p class="purple__title">Jersey<span class="white__title">shop</span></p>
             </div>
+            <div class="mid__header__content">
+                <p>Teams</p>
+                <p>Shop</p>
+            </div>
+            <div class="right__header__content">
+                <p class="login__button">Login</p>
+                <box-icon name='basket' type='solid' color='#ffffff'></box-icon>
+            </div>
+            <div class="burger-menu">
+                <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
+            </div>
+        </header>
+
+        <div class="hero">
+            <img src="../public/img/test2.png" alt="Hero image">
         </div>
-    </section>
+    </main>
 
-
-
-
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="/public/js/index.js"></script>
-
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 
 </html>

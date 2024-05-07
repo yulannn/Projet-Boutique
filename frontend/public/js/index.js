@@ -1,15 +1,17 @@
-document.querySelector('.burger-menu').addEventListener('click', function() {
-    var menu = document.querySelector('.navigation-menu');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-});
 
 
 function openBurger(){
     console.log('open')
+    var menu = document.querySelector('.navigation-menu');
+    menu.style.right = '0';
+    menu.style.transition = 'right 0.5s'
     var buttonBurger = document.querySelector('#burger-button');
-    buttonBurger.setAttribute('color', 'black');
+
+    setTimeout(() => {
+        buttonBurger.setAttribute('color', 'black');
     buttonBurger.setAttribute('name', 'x');
     buttonBurger.setAttribute('onClick', 'closeBurger()')
+    }, 200);
 }
 
 function closeBurger(){
@@ -18,4 +20,7 @@ function closeBurger(){
     buttonBurger.setAttribute('color', 'white');
     buttonBurger.setAttribute('name', 'menu');
     buttonBurger.setAttribute('onClick', 'openBurger()')
+    var menu = document.querySelector('.navigation-menu');
+    menu.style.right =  '-45%';
+    
 }

@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 body {
@@ -34,6 +33,11 @@ body {
     height: 100%;
 }
 
+
+.left__header__content a {
+    text-decoration: none;
+}
+
 .purple__title {
     color: #5f3dc4;
     font-size: 2rem;
@@ -49,6 +53,10 @@ body {
 .mid__header__content a {
     color: white;
     text-decoration: none;
+}
+
+#teams__page__button {
+    color: #5f3dc4;
 }
 
 .mid__header__content {
@@ -106,6 +114,7 @@ box-icon {
     z-index: 1001;
     cursor: pointer;
 }
+
 
 .navigation-menu {
     display: flex;
@@ -187,3 +196,93 @@ box-icon {
     cursor: pointer;
     font-weight: bold;
 }
+
+
+/* Affichage des équipes */
+
+
+.all__teams__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.teams_row_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 2rem;
+}
+
+.team__card {
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    border: solid white 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+
+.team__card__flag {
+    width: 20%;
+    margin: 20px;
+}
+
+.team__card__flag img {
+    border-radius: 100px;
+}
+
+.team__card__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team__card__logo img {
+    width: 50%;
+}
+
+.team__card__name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+.team__card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+
+.error__message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.error__message p {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+

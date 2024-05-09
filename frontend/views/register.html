@@ -4,23 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/register.css">
 </head>
 <body>
-<h1>Inscription</h1>
-<div class="container">
-    <form id="registerForm">
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="firstName">Prénom:</label>
-        <input type="text" id="firstName" name="firstName" required>
-        <label for="lastName">Nom:</label>
-        <input type="text" id="lastName" name="lastName" required>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">S'inscrire</button>
-    </form>
-</div>
+<main class="container">
+    <header class="home__header">
+        <div class="left__header__content">
+            <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
+        </div>
+        <div class="mid__header__content">
+            <a id="teams__page__button" href="/teams">Teams</a>
+            <a id="shop__page__button" href="/shop">Shop</a>
+        </div>
+        <div class="right__header__content">
+            <a href="/login">Login</a>
+            <box-icon name='basket' type='solid' color='#ffffff'></box-icon>
+        </div>
+        <div class="burger-menu">
+            <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
+            <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
+        </div>
+        <div class="language-switcher">
+            <select id="language-select" onchange="changeLanguage(this.value)">
+                <option value="en">EN</option>
+                <option value="fr">FR</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="register__container">
+        <form id="registerForm">
+            <h1>Inscription</h1>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="firstName">Prénom:</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <label for="lastName">Nom:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">S'inscrire</button>
+            <span id="login__link">J'ai déjà un compte. <a href="/login">Se connecter</a></span>
+        </form>
+    </div>
+</main>
 <script src="/public/js/register.js"></script>
 </body>
 </html>

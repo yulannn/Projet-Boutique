@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                const result = await response.json();
-                alert(result.message);
                 window.location.href = '/login';
             } else {
                 const errorData = await response.json();

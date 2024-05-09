@@ -44,6 +44,9 @@ body {
     font-weight: bold;
 }
 
+.left__header__content a {
+    text-decoration: none;
+}
 .white__title {
     color: white;
     font-size: 2rem;
@@ -77,6 +80,12 @@ body {
     gap: 5vw;
     width: 30%;
     height: 100%;
+}
+
+.right__header__content a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
 }
 
 .login__button {

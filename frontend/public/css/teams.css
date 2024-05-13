@@ -300,3 +300,22 @@ box-icon {
 .error__message p {
     font-family: 'Roboto', sans-serif;
 }
+
+.team__filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#serveurOrigin {
+    background-color: #5f3dc4;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    border: solid white 2px;
+    text-decoration: none;
+}
+

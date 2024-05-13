@@ -45,6 +45,20 @@ app.get('/teams', (req, res) => {
     res.sendFile(__dirname + '/views/teams.html');
 });
 
+
+// Team Page
+
+app.get('/team/:id', (req, res) => {
+    res.sendFile(__dirname + '/views/team.html');
+});
+
+
+// Shop page
+
+app.get('/shop', (req, res) => {
+    res.sendFile(__dirname + '/views/shop.html');
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);

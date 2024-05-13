@@ -9,47 +9,56 @@
 </head>
 
 <body>
-<div class="navigation-menu">
-    <ul>
-        <li class="burger__liste"><a href="/teams">Teams</a></li>
-        <li class="burger__liste"><a href="#shop">Shop</a></li>
-        <li class="burger__liste"><a href="#login">Login</a></li>
-        <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
+    <div class="navigation-menu">
+        <ul>
+            <li class="burger__liste"><a href="/teams">Teams</a></li>
+            <li class="burger__liste"><a href="#shop">Shop</a></li>
+            <li class="burger__liste"><a href="#login">Login</a></li>
+            <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
 
-    </ul>
-</div>
+        </ul>
+    </div>
 
-<main class="container">
-    <header class="home__header">
-        <div class="left__header__content">
-            <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
-        </div>
-        <div class="mid__header__content">
-            <a id="teams__page__button" href="/teams">Teams</a>
-            <a id="shop__page__button" href="/shop">Shop</a>
-        </div>
-        <div class="right__header__content">
-            <a href="/login">Login</a>
-            <box-icon name='basket' type='solid' color='#ffffff'></box-icon>
-        </div>
-        <div class="burger-menu">
-            <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
-            <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
-        </div>
-        <div class="language-switcher">
-            <select id="language-select" onchange="changeLanguage(this.value)">
-                <option value="en">EN</option>
-                <option value="fr">FR</option>
+    <main class="container">
+        <header class="home__header">
+            <div class="left__header__content">
+                <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
+            </div>
+            <div class="mid__header__content">
+                <a id="teams__page__button" href="/teams">Teams</a>
+                <a id="shop__page__button" href="/shop">Shop</a>
+            </div>
+            <div class="right__header__content">
+                <p class="login__button">Login</p>
+                <box-icon name='basket' type='solid' color='#ffffff'></box-icon>
+            </div>
+            <div class="burger-menu">
+                <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
+                <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
+            </div>
+            <div class="language-switcher">
+                <select id="language-select" onchange="changeLanguage(this.value)">
+                    <option value="en">EN</option>
+                    <option value="fr">FR</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="teamFilter">
+            <select name="serveurOrigin" id="serveurOrigin">
+                <option value="all">Tous les serveurs</option>
+                <option value="coreen">coréen</option>
+                <option value="chine">chine</option>
+                <option value="europe">europe</option>
+                <option value="amerique">amérique</option>
             </select>
         </div>
-    </header>
+        <div id="teamContainer" class="all__teams__container"></div>
+        <div class="error__message"></div>
+    </main>
 
-    <div id="teamContainer" class="all__teams__container"></div>
-    <div class="error__message"></div>
-</main>
-
-<script src="/public/js/teams.js"></script>
-<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="/public/js/teams.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 
 </html>

@@ -4,11 +4,31 @@ import db from '../database/database.js';
 const router = express.Router();
 
 router.get('/team', (req, res) => {
-    db.query('SELECT * FROM Team', (err, results) => {
+    let sqlQuery = 'SELECT * FROM Team';
+    const params = [];
+
+    if (req.query.origin) {
+        const originFilter = {
+            europe: ['FR', 'DE', 'ES', 'IT', 'GB'],
+            amerique: ['US', 'CA', 'NL', 'BR'],
+            coreen: ['KR'],
+            chine: ['CN']
+        };
+
+        const origins = originFilter[req.query.origin];
+
+        if (origins) {
+            sqlQuery += ' WHERE origin IN (?)';
+            params.push(origins);
+        }
+    }
+
+    db.query(sqlQuery, params, (err, results) => {
         if (err) return res.status(500).send('Erreur de base de données');
         res.status(200).json(results);
     });
 });
+
 
 router.get('/team/:id', (req, res) => {
     const id = req.params.id;

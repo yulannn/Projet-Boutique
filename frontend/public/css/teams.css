@@ -14,6 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-bottom: 10vh;
 }
 
 .home__header {
@@ -242,6 +243,16 @@ box-icon {
 }
 
 
+
+/*  pour téléphone */
+@media (max-width: 768px) {
+    .team__card {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+
 .team__card__flag {
     width: 20%;
     margin: 20px;
@@ -289,9 +300,3 @@ box-icon {
 .error__message p {
     font-family: 'Roboto', sans-serif;
 }
-
-
-
-
-
-

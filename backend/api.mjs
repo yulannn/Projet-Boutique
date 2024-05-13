@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
+
 
 import teamsRouter from './src/routes/teams.js';
 import usersRouter from './src/routes/users.js';
@@ -12,8 +14,26 @@ import playersRouter from "./src/routes/players.js";
 const port = 3000;
 const api = express();
 
+
+function validateCookie(req, res, next) {
+    // Ici, nous ignorons la vérification des cookies et passons simplement au middleware suivant
+    console.log('Middleware validateCookie bypassé pour les tests.');
+    next();
+}
+
+
+
+export { validateCookie };
+
 api.use(express.json());
-api.use(cors());
+api.use(cors({
+    origin: 'http://localhost:8080',
+    credentials: true
+}));
+api.use(cookieParser());
+
+
+
 
 api.use(teamsRouter);
 api.use(usersRouter);

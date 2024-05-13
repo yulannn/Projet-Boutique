@@ -1,9 +1,10 @@
 import express from 'express';
 import db from '../database/database.js';
+import { validateCookie } from '../../api.mjs';
 
 const router = express.Router();
 
-router.get('/team', (req, res) => {
+router.get('/team', validateCookie, (req, res) => {
     let sqlQuery = 'SELECT * FROM Team';
     const params = [];
 

@@ -23,7 +23,13 @@ router.post('/api/login', (req, res) => {
             return res.status(401).json({ error: 'Mot de passe incorrect' });
         }
 
-        res.status(200).json({ message: 'Connexion réussie' });
+        const sessionToken = crypto.randomBytes(16).toString('hex');
+        res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+        res.cookie('session_id', sessionToken);
+
+
+        console.log('Cookie created:', sessionToken);
+        res.status(200).json({ message: 'Connexion réussie', cookieCreated: true });
     });
 });
 

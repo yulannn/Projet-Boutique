@@ -32,7 +32,7 @@ router.post('/jerseys', (req, res) => {
     const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
     const currency = 'EUR';
 
-    console.log('Received:', { nom, prix, taille, stock, description, matiere, couleur , id_team});
+    console.log('Received:', { nom, prix, taille, stock, description, matiere, couleur, id_team });
 
     // Requête SQL pour insérer les données dans la base de données
     const query = 'INSERT INTO Jersey (name, price, size, stock, description, material, color, currency, team_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';

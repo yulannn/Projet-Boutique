@@ -77,7 +77,8 @@ body {
 
 .right__header__content a {
     font-weight: bold;
-    color: #5f3dc4;;
+    color: #5f3dc4;
+    ;
     text-decoration: none;
 }
 
@@ -202,14 +203,19 @@ box-icon {
 
 /* Affichage du formulaire de connexion */
 
+.main__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 70%;
+    margin: 0 auto;
+}
 
 .login__container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    padding: 20px;
+    margin-top: 4rem;
+    width: fit-content;
+    padding: 2.5rem 3rem;
     background-color: #090E16;
     border-radius: 8px;
     border: solid 1px #5f3dc4;
@@ -269,4 +275,25 @@ box-icon {
 #register__link {
     margin-top: 1rem;
     text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .main__container {
+        width: 100%;
+    }
+
+    .login__container {
+        width: 80%;
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .login__container {
+        width: 50%;
+    }
+
+    .main__container {
+        width: 100%;
+    }
 }

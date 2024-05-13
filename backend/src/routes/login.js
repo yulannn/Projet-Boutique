@@ -1,8 +1,23 @@
 import express from 'express';
 import db from '../database/database.js';
 import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
+
+function createSessionToken(accountId, roleId) {
+    const payload = {
+        accountId: accountId,
+        roleId: roleId,
+        exp: Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60),
+    };
+
+    const token = jwt.sign(payload, 'zbok');
+    return token;
+}
+
+
+
 router.post('/api/login', (req, res) => {
     const { email, password } = req.body;
 
@@ -23,13 +38,24 @@ router.post('/api/login', (req, res) => {
             return res.status(401).json({ error: 'Mot de passe incorrect' });
         }
 
-        const sessionToken = crypto.randomBytes(16).toString('hex');
-        res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
-        res.cookie('session_id', sessionToken);
+        fetch('http://localhost:3000/users/' + email, {
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+        }).then(data => {
+            const sessionToken = createSessionToken(data.id_account, data.id_role);
+            res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+            res.cookie('session_id', sessionToken);
 
 
-        console.log('Cookie created:', sessionToken);
-        res.status(200).json({ message: 'Connexion réussie', cookieCreated: true });
+            console.log('Cookie created:', sessionToken);
+            res.status(200).json({ message: 'Connexion réussie', cookieCreated: true });
+            console.log(decodeSessionToken(sessionToken))
+        }).catch(error => {
+            console.error(error);
+        });
+
     });
 });
 

@@ -2,6 +2,7 @@ import express from 'express';
 import db from '../database/database.js';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
+import { decodeSessionToken } from '../../api.mjs';
 
 const router = express.Router();
 

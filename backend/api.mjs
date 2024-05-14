@@ -25,6 +25,8 @@ function decodeSessionToken(token) {
     }
 }
 
+export { decodeSessionToken };
+
 function validateCookie(req, res, next) {
     console.log('Middleware validateCookie bypassé pour les tests.');
     next();

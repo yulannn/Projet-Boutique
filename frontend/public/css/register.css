@@ -77,7 +77,8 @@ body {
 
 .right__header__content a {
     font-weight: bold;
-    color: #5f3dc4;;
+    color: #5f3dc4;
+    ;
     text-decoration: none;
 }
 
@@ -202,12 +203,15 @@ box-icon {
 
 /* Affichage du formulaire de connexion */
 
+.main__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+}
 
 .register__container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
     width: 400px;
     padding: 20px;
     background-color: #090E16;
@@ -223,7 +227,7 @@ box-icon {
 
 #registerForm h1 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 #registerForm input {
@@ -233,7 +237,7 @@ box-icon {
 }
 
 #registerForm label {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     margin-bottom: 1rem;
     font-weight: bold;
 }
@@ -269,4 +273,35 @@ box-icon {
 #login__link {
     margin-top: 1rem;
     text-align: center;
+}
+
+@media screen and (max-width: 769px) {
+    .register__container {
+        width: 70%;
+    }
+
+    .main__container {
+        margin-top: 12vh;
+    }
+
+}
+
+@media screen and (max-width: 430px) {
+    .register__container {
+        width: 85%;
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .main__container {
+        margin-top: 12vh;
+    }
+
+    .register__container {
+        width: 50%;
+        height: 650px;
+        padding: 40px 25px;
+
+    }
 }

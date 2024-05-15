@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 // Teams Page
 
 app.get('/teams', (req, res) => {
+
     res.sendFile(__dirname + '/views/teams.html');
 });
 

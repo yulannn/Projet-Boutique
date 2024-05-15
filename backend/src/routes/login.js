@@ -2,7 +2,6 @@ import express from 'express';
 import db from '../database/database.js';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
-import { decodeSessionToken } from '../../api.mjs';
 
 const router = express.Router();
 
@@ -52,11 +51,10 @@ router.post('/api/login', (req, res) => {
 
             console.log('Cookie created:', sessionToken);
             res.status(200).json({ message: 'Connexion réussie', cookieCreated: true });
-            console.log(decodeSessionToken(sessionToken))
+
         }).catch(error => {
             console.error(error);
         });
-
     });
 });
 

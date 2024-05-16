@@ -3,30 +3,6 @@ console.log('teams.js loaded');
 document.addEventListener('DOMContentLoaded', function () {
     const teamOrigin = document.getElementById('serveurOrigin');
 
-    fetch('http://localhost:3000/api/valide_cookie', {
-        method: 'GET',
-        credentials: 'include'
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Erreur lors de la vérification du cookie');
-            }
-        })
-        .then(data => {
-            console.log(data)
-            if (data.valid === true) {
-                const loginButton = document.getElementById('login__button');
-                loginButton.textContent = 'Profile';
-                loginButton.href = '/profile';
-            }
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-        });
-
-
     teamOrigin.addEventListener('change', fetchTeams);
 
 
@@ -37,7 +13,7 @@ function fetchTeams() {
     const teamOrigin = document.getElementById('serveurOrigin');
     const origin = teamOrigin.value;
 
-    fetch(`http://localhost:3000/team?origin=${origin}`)
+    fetch(`http://localhost:3000/teams?origin=${origin}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {

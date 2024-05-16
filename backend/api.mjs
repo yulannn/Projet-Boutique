@@ -36,6 +36,6 @@ api.use(loginRouter);
 api.use(playersRouter);
 api.use(sessionRouter);
 
-api.listen(port, () => {
+api.listen(port, '0.0.0.0', () => {
     console.log(`Serveur lancé sur le port ${port}`);
 });

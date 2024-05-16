@@ -249,6 +249,7 @@ box-icon {
     .team__card {
         width: 80%;
         margin: 0 auto;
+        height: 400px;
     }
 }
 
@@ -318,4 +319,3 @@ box-icon {
     border: solid white 2px;
     text-decoration: none;
 }
-

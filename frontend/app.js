@@ -20,6 +20,10 @@ app.get('/addreduction', (req, res) => {
     res.sendFile(__dirname + '/views/createPromo.html');
 });
 
+app.get('/profile', (req, res) => {
+    res.sendFile(__dirname + '/views/profile.html');
+});
+
 
 // Home page
 

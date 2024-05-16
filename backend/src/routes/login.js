@@ -14,9 +14,9 @@ function createSessionToken(accountId, roleId) {
 
     const token = jwt.sign(payload, 'zbok');
     return token;
+
+
 }
-
-
 
 router.post('/api/login', (req, res) => {
     const { email, password } = req.body;
@@ -51,7 +51,10 @@ router.post('/api/login', (req, res) => {
 
             console.log('Cookie created:', sessionToken);
             res.status(200).json({ message: 'Connexion réussie', cookieCreated: true });
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         }).catch(error => {
             console.error(error);
         });

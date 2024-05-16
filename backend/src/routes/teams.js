@@ -1,9 +1,18 @@
 import express from 'express';
 import db from '../database/database.js';
+<<<<<<< Updated upstream
 
 const router = express.Router();
 
 router.get('/team', (req, res) => {
+=======
+import { verifyToken } from '../../api.mjs';
+
+const router = express.Router();
+
+router.get('/team', verifyToken, (req, res) => {
+    console.log(req.cookies.session_id)
+>>>>>>> Stashed changes
     let sqlQuery = 'SELECT * FROM Team';
     const params = [];
 

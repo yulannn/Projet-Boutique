@@ -1,8 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-
-
 import teamsRouter from './src/routes/teams.js';
 import usersRouter from './src/routes/users.js';
 import jerseyRouter from './src/routes/jersey.js';
@@ -15,7 +13,30 @@ import sessionRouter from "./src/routes/session.js";
 const port = 3000;
 const api = express();
 
+<<<<<<< Updated upstream
 
+=======
+
+function verifyToken(req, res, next) {
+    console.log(req)
+    const token = req.cookie.session_id;
+    if (!token) {
+        console.log('A token is required for authentication');
+        return res.status(403).send('A token is required for authentication');
+    }
+
+    try {
+        const decoded = jwt.verify(token, 'zbok');
+        req.user = decoded;
+        next();
+    } catch (err) {
+        return res.status(401).send('Invalid Token');
+    }
+}
+
+
+export { verifyToken };
+>>>>>>> Stashed changes
 
 api.use(express.json());
 api.use(cors({

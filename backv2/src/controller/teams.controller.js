@@ -2,7 +2,8 @@ const Teams = require('../modeles/teams.modele');
 
 class ControllerTeams {
     static getTeams = (req, res) => {
-        Teams.getTeams((err, result) => {
+        const server = req.query.origin;
+        Teams.getTeams(server, (err, result) => {
             if (err) {
                 if (result.message === "not found") {
                     res.status(404).send({ message: "Aucune équipe trouvée" });

@@ -1,7 +1,13 @@
+document.addEventListener('DOMContentLoaded', function () {
+    loadSession();
+    fetchPlayers();
+    fetchTeam();
+});
+
 function fetchTeam() {
     const teamId = window.location.pathname.split('/')[2];
 
-    fetch(`http://localhost:3000/team/${teamId}`)
+    fetch(`http://localhost:3000/api/team?team_id=${teamId}`)
         .then(response => response.json())
         .then(data => {
             data = data[0];
@@ -33,10 +39,27 @@ function fetchTeam() {
         })
 }
 
+function loadSession() {
+    fetch('http://localhost:3000/api/user', {
+        credentials: 'include'
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const loginButton = document.getElementById('login__button');
+            if (data.first_name) {
+                loginButton.textContent = data.first_name;
+                loginButton.href = "/profile";
+            } else {
+                loginButton.textContent = "Login";
+                loginButton.href = "/login";
+            }
+        })
+}
 
 function fetchPlayers() {
     const teamId = window.location.pathname.split('/')[2];
-    fetch(`http://localhost:3000/players/team/${teamId}`)
+    fetch(`http://localhost:3000/api/players?team_id=${teamId}`)
         .then(response => response.json())
         .then(data => {
             const playersContainer = document.querySelector('.players__display');
@@ -73,6 +96,3 @@ function fetchPlayers() {
             });
         })
 }
-
-fetchPlayers();
-fetchTeam();

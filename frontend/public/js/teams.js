@@ -1,19 +1,35 @@
-console.log('teams.js loaded');
-
 document.addEventListener('DOMContentLoaded', function () {
     const teamOrigin = document.getElementById('serveurOrigin');
 
     teamOrigin.addEventListener('change', fetchTeams);
 
-
+    loadSession();
     fetchTeams();
 });
+
+function loadSession() {
+    fetch('http://localhost:3000/api/user', {
+        credentials: 'include'
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const loginButton = document.getElementById('login__button');
+            if (data.first_name) {
+                loginButton.textContent = data.first_name;
+                loginButton.href = "/profile";
+            } else {
+                loginButton.textContent = "Login";
+                loginButton.href = "/login";
+            }
+        })
+}
 
 function fetchTeams() {
     const teamOrigin = document.getElementById('serveurOrigin');
     const origin = teamOrigin.value;
 
-    fetch(`http://localhost:3000/teams?origin=${origin}`)
+    fetch(`http://localhost:3000/api/teams?origin=${origin}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {

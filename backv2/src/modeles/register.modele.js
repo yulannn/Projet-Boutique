@@ -10,11 +10,10 @@ class Register {
         this.password = register.password;
         this.created_at = register.created_at;
     }
-    static register(register, res) {
-        let sqlQuery = db.format("INSERT INTO accounts SET ?", register);
+    static register(user, res) {
+        let sqlQuery = db.format("INSERT INTO accounts SET ?", user);
         db.query(sqlQuery, (err, result) => {
             if (err) {
-                console.log(err)
                 res(true, err);
                 return;
             }

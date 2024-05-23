@@ -1,3 +1,33 @@
+var swiper = new Swiper(".mySwiper", {});
+const infos = document.querySelector("#infos");
+const activities = document.querySelector("#activities");
+
+// Event listeners for click events
+infos.addEventListener("click", function () {
+    swiper.slideTo(0);
+});
+
+activities.addEventListener("click", function () {
+    swiper.slideTo(1);
+});
+
+swiper.on("slideChange", function () {
+    console.log("slide changed");
+    console.log(swiper.realIndex);
+    if (swiper.realIndex == 0) {
+        infos.style.color = "#5f3dc4";
+        activities.style.color = "grey";
+        infos.classList.add("underline");
+        activities.classList.remove("underline");
+    } else {
+        infos.style.color = "grey";
+        activities.style.color = "#5f3dc4";
+        activities.classList.add("underline");
+        infos.classList.remove("underline");
+    }
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
     getProfile();

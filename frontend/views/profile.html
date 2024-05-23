@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/profile.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
 </head>
 
@@ -27,7 +27,7 @@
             </div>
             <div class="mid__header__content">
                 <a href="/teams">Teams</a>
-                <a href="/shop">Teams</a>
+                <a href="/shop">Shop</a>
             </div>
             <div class="right__header__content">
                 <a id="login__button"></a>
@@ -45,13 +45,40 @@
             </div>
         </header>
 
-        <div class="content-div">
-            <h1>page profile</h1>
-            <p id="first__name"></p>
-            <p id="last__name"></p>
-            <p id="email"></p>
-            <p id="created__at"></p>
+        <div id="logoutPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="togglePopup()">&times;</span>
+                <h2>Êtes-vous sûr de vouloir vous déconnecter?</h2>
+                <button id="confirmLogout">Oui</button>
+                <button onclick="togglePopup()">Non</button>
+            </div>
         </div>
+
+        <div class="profile__header">
+            <h1>Informations</h1>
+        </div>
+
+        <div class="display__profile">
+            <div class="infos__display">
+                <p id="first__name">Romain Goudergues</p>
+                <p id="created__at">Membre depuis le 15/05/2024</p>
+                <a id="email">romgoud123@gmail.com</a>
+                <a id="reset__pwd">Modifier mon mot de passe</a>
+                <a id="logout__button">Déconnexion</a>
+            </div>
+            <div class="stats__display">
+                <div class="info__text__display">
+                    <p id="total__orders">2</p>
+                    <p>Orders</p>
+                </div>
+                <div class="info__text__display">
+                    <p id="total__reviews">3</p>
+                    <p>Reviews</p>
+                </div>
+
+            </div>
+        </div>
+
     </main>
 
     <script src="/public/js/profile.js"></script>

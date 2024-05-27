@@ -19,6 +19,8 @@ require('./src/routes/players.route')(app);
 require('./src/routes/register.route')(app);
 require('./src/routes/login.route')(app);
 require('./src/routes/team.route')(app);
+require('./src/routes/jerseys.route')(app);
+require('./src/routes/jersey.route')(app);
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

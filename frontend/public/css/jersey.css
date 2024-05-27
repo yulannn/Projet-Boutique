@@ -208,63 +208,53 @@ box-icon {
 }
 
 
-/* Affichage de la boutique */
+/* Affichage du maillot */
 
-/* Barre de navigation */
-
-
-.search__bar {
+.jersey__container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
+    flex-direction: row;
+    margin-top: 5vw;
+    gap: 5vw;
 }
 
-#search__input {
-    width: 30%;
-    text-decoration: none;
-    padding: 10px;
-    border: 3px solid #5f3dc4;
-    border-radius: 10px;
-    background-color: #090E16;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-#search__input::placeholder {
-    color: white;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.product {
+.product__image  {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    width: 20%;
+    width: 35%;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid white;
+    border: 5px solid white;
     transition: 0.2s;
     cursor: pointer;
+    margin-left: 5vw;
 }
 
-.product:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+.product__image img {
+    width: 65%;
 }
 
-.product img {
-    width: 75%;
+.product__infos {
+    position: relative;
+}
+
+.product__infos h3 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+#jersey__price {
+    font-size: 2rem;
+    position: absolute;
+    bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .jersey__container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

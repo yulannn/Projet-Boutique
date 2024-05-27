@@ -2,7 +2,7 @@ const Jersey = require('../modeles/jersey.modele.js');
 
 class ControllerJersey {
     static getJersey = (req, res) => {
-        let jersey_id = req.query.jersey_id;
+        let jersey_id = req.query.id_jersey;
         Jersey.getJersey(jersey_id, (err, result) => {
             if (err) {
                 if (result.message === "not found") {

@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
+    displayProducts();
 });
 
 function loadSession() {
@@ -18,4 +19,21 @@ function loadSession() {
                 loginButton.href = "/login";
             }
         })
+}
+
+function displayProducts() {
+    fetch('http://localhost:3000/api/jerseys')
+        .then(response => response.json())
+        .then(data => {
+            const products = document.querySelector('.products');
+            data.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.className = 'product';
+                productElement.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>${product.price} €</p>
+                `;
+                products.appendChild(productElement);
+            });
+        });
 }

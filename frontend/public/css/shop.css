@@ -210,3 +210,51 @@ box-icon {
 
 /* Affichage de la boutique */
 
+/* Barre de navigation */
+
+
+.search__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#search__input {
+    width: 30%;
+    text-decoration: none;
+    padding: 10px;
+    border: 3px solid #5f3dc4;
+    border-radius: 10px;
+    background-color: #090E16;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#search__input::placeholder {
+    color: white;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 20%;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

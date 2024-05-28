@@ -147,7 +147,7 @@ box-icon {
 }
 
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 431px) {
 
     .hero img {
         transform: scale(1);

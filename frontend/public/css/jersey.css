@@ -48,6 +48,7 @@ body {
 .left__header__content a {
     text-decoration: none;
 }
+
 .white__title {
     color: white;
     font-size: 2rem;
@@ -157,7 +158,7 @@ box-icon {
 }
 
 
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 431px) {
 
     .hero img {
         transform: scale(1);
@@ -217,7 +218,7 @@ box-icon {
     gap: 5vw;
 }
 
-.product__image  {
+.product__image {
     display: flex;
     flex-direction: column;
     justify-content: center;

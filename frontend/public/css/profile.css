@@ -147,38 +147,7 @@ box-icon {
 }
 
 
-@media only screen and (max-width: 430px) {
 
-    .hero img {
-        transform: scale(1);
-        margin-top: 5vh;
-    }
-
-    .hero {
-        height: 40vh;
-    }
-
-    .mid__header__content,
-    .right__header__content {
-        display: none;
-    }
-
-
-    .left__header__content {
-        margin-left: 10px;
-        width: 50%;
-    }
-
-    .burger-menu {
-        display: flex;
-        right: 10%;
-        gap: 2rem;
-    }
-
-    .language-switcher {
-        display: none;
-    }
-}
 
 .language-switcher {
     position: absolute;
@@ -212,7 +181,7 @@ box-icon {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10vw;
+    gap: 15vw;
 }
 
 /* infos du profile */
@@ -262,7 +231,7 @@ box-icon {
 
 .stats__display {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 2vh;
     font-weight: bold;
 }
@@ -342,7 +311,6 @@ box-icon {
 
 .swiper {
     width: 100%;
-    height: 58vh;
 }
 
 
@@ -407,4 +375,69 @@ box-icon {
 
 #activities {
     color: grey;
+}
+
+@media only screen and (max-width: 431px) {
+
+    .hero img {
+        transform: scale(1);
+        margin-top: 5vh;
+    }
+
+    .hero {
+        height: 40vh;
+    }
+
+    .mid__header__content,
+    .right__header__content {
+        display: none;
+    }
+
+
+    .left__header__content {
+        margin-left: 10px;
+        width: 50%;
+    }
+
+    .burger-menu {
+        display: flex;
+        right: 10%;
+        gap: 2rem;
+    }
+
+    .language-switcher {
+        display: none;
+    }
+
+    .profile__menu {
+        font-size: 1.25rem;
+        gap: 6rem;
+    }
+
+    .stats__display {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 3vh;
+        margin-right: 5%;
+    }
+
+    .info__text__display {
+        font-size: 2rem;
+    }
+
+    .infos__display {
+        font-size: 0.8rem;
+        padding: 10px 20px;
+        gap: 1.5vh;
+    }
+
+    #email,
+    #reset__pwd,
+    #logout__button {
+        border-radius: 25px;
+    }
+
+    #created__at {
+        margin-bottom: 10px;
+    }
 }

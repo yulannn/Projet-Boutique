@@ -414,11 +414,15 @@ box-icon {
         gap: 6rem;
     }
 
+    .display__profile {
+        flex-direction: column;
+        gap: 5vh;
+    }
+
     .stats__display {
         font-size: 0.8rem;
-        flex-direction: column;
-        gap: 3vh;
-        margin-right: 5%;
+        flex-direction: row;
+        gap: 5vw;
     }
 
     .info__text__display {

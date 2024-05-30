@@ -13,7 +13,7 @@
     <ul>
         <li class="burger__liste"><a href="/teams">Teams</a></li>
         <li class="burger__liste"><a href="/shop">Shop</a></li>
-        <li class="burger__liste"><a href="/login">Login</a></li>
+        <li class="burger__liste"><a id="login__burger__button" href="/login">Login</a></li>
         <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
 
     </ul>
@@ -36,33 +36,37 @@
             <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
             <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
         </div>
-        <div class="language-switcher">
-            <select id="language-select" onchange="changeLanguage(this.value)">
-                <option value="en">EN</option>
-                <option value="fr">FR</option>
-            </select>
-        </div>
     </header>
+
     <div class="jersey__container">
         <div class="product__image"></div>
         <div class="product__display">
             <div class="product__infos"></div>
             <div class="product__sizes">
+                <h2>Choisissez votre taille</h2>
                 <div class="size__buttons">
                     <a id="1" class="size__button">XS</a>
                     <a id="2" class="size__button">S</a>
-                    <a id="3" class="size__button">M</a>
+                    <a id="3" class="size__button size__button--selected">M</a>
                     <a id="4" class="size__button">L</a>
                     <a id="5" class="size__button">XL</a>
                     <a id="6" class="size__button">2XL</a>
                 </div>
             </div>
-            <div class="product__stock"></div>
-            <div class="product__price">
-                <div class="price__value"></div>
+            <div class="payment__info">
+                <div class="test">
+                    <div class="product__stock"></div>
+                    <div class="product__price">
+                        <div class="price__value"></div>
+                    </div>
+                </div>
+                <div class="product__add">
+                    <a id="add__button" class="add__button-invalid">Add to cart</a>
+                </div>
             </div>
         </div>
     </div>
+
 </main>
 
 <script src="/public/js/burger.js"></script>

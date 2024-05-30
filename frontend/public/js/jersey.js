@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSession();
     displayImage();
     displayJersey();
+    loadStock(3);
 });
 
 document.querySelectorAll(".size__button").forEach(button => {
@@ -11,29 +12,37 @@ document.querySelectorAll(".size__button").forEach(button => {
         });
         event.target.classList.add("size__button--selected");
         const id = parseInt(event.target.id);
-        const jerseyId = window.location.pathname.split('/')[2];
-        fetch('http://localhost:3000/api/stock?id_jersey=' + jerseyId, {
-            credentials: 'include'
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                data.forEach(stock => {
-                    if (stock.id_size === id) {
-                        const stockDiv = document.querySelector(".product__stock");
-                        if (stock.stock === 0) {
-                            stockDiv.textContent = "Out of stock";
-                            stockDiv.style.color = "red";
-                        } else {
-                            stockDiv.textContent = "In stock : " + stock.stock;
-                            stockDiv.style.color = "green";
-                        }
-                    }
-                });
-        })
+        loadStock(id);
     });
 });
 
+function loadStock(id) {
+    const jerseyId = window.location.pathname.split('/')[2];
+    fetch('http://localhost:3000/api/stock?id_jersey=' + jerseyId, {
+        credentials: 'include'
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            data.forEach(stock => {
+                if (stock.id_size === id) {
+                    const stockDiv = document.querySelector(".product__stock");
+                    const addButton = document.querySelector("#add__button");
+                    if (stock.stock === 0) {
+                        stockDiv.textContent = "Out of stock";
+                        stockDiv.style.color = "red";
+                        addButton.className = '';
+                        addButton.classList.add("add__button-invalid");
+                    } else {
+                        stockDiv.textContent = "In stock : " + stock.stock;
+                        stockDiv.style.color = "green";
+                        addButton.className = '';
+                        addButton.classList.add("add__button-valid");
+                    }
+                }
+            });
+        })
+}
 
 function loadSession() {
     fetch('http://localhost:3000/api/user', {
@@ -43,12 +52,17 @@ function loadSession() {
         .then(data => {
             console.log(data);
             const loginButton = document.getElementById('login__button');
+            const loginBurgerButton = document.getElementById('login__burger__button');
             if (data.first_name) {
                 loginButton.textContent = data.first_name;
                 loginButton.href = "/profile";
+                loginBurgerButton.textContent = data.first_name;
+                loginBurgerButton.href = "/profile";
             } else {
                 loginButton.textContent = "Login";
                 loginButton.href = "/login";
+                loginBurgerButton.textContent = "Login";
+                loginBurgerButton.href = "/login";
             }
         })
 }

@@ -241,6 +241,7 @@ box-icon {
 .product__infos {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
 
 .product__display {
@@ -255,6 +256,12 @@ box-icon {
     font-weight: bold;
 }
 
+.product__sizes h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+
+}
 .size__buttons {
     display: flex;
     gap: 1rem;
@@ -275,11 +282,68 @@ box-icon {
     background-color: rgba(255, 255, 255, 0.1);
     cursor: pointer;
 }
-.size__button--selected {
 
+.size__button--selected {
     border: 2px solid white;
 }
 
+.add__button-valid {
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #5f3dc4;
+    background-color: #5f3dc4;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add__button-valid:hover {
+    color: #5f3dc4;
+    border: 2px solid #5f3dc4;
+    background-color: #090E16;
+}
+
+.add__button-invalid {
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #cccccc;
+    background-color: #f0f0f0;
+    color: #999999;
+    font-weight: bold;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.add__button-invalid:hover {
+    color: #999999;
+    border: 2px solid #cccccc;
+    background-color: #f0f0f0;
+    opacity: 0.6;
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.payment__info {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 65%;
+}
 
 @media (max-width: 768px) {
     .jersey__container {

@@ -2,7 +2,6 @@ var swiper = new Swiper(".mySwiper", {});
 const infos = document.querySelector("#infos");
 const activities = document.querySelector("#activities");
 
-// Event listeners for click events
 infos.addEventListener("click", function () {
     swiper.slideTo(0);
 });
@@ -95,13 +94,18 @@ function loadSession() {
         .then(data => {
             if (data) {
                 const loginButton = document.getElementById('login__button');
+                const loginBurgerButton = document.getElementById('login__burger__button');
                 if (data.first_name) {
                     loginButton.textContent = data.first_name;
                     loginButton.style.color = "#5f3dc4";
                     loginButton.href = "/profile";
+                    loginBurgerButton.textContent = data.first_name;
+                    loginBurgerButton.style.color = "#5f3dc4";
                 } else {
                     loginButton.textContent = "Login";
                     loginButton.href = "/login";
+                    loginBurgerButton.textContent = "Login";
+                    loginBurgerButton.href = "/login";
                 }
             }
         })

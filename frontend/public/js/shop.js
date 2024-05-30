@@ -15,12 +15,17 @@ function loadSession() {
         .then(data => {
             console.log(data);
             const loginButton = document.getElementById('login__button');
+            const loginBurgerButton = document.getElementById('login__burger__button');
             if (data.first_name) {
                 loginButton.textContent = data.first_name;
                 loginButton.href = "/profile";
+                loginBurgerButton.textContent = data.first_name;
+                loginBurgerButton.href = "/profile";
             } else {
                 loginButton.textContent = "Login";
                 loginButton.href = "/login";
+                loginBurgerButton.textContent = "Login";
+                loginBurgerButton.href = "/login";
             }
         })
 }
@@ -29,7 +34,7 @@ function displayProducts() {
     fetch('http://localhost:3000/api/jerseys')
         .then(response => response.json())
         .then(data => {
-            allProducts = data; // Stocker les produits globalement
+            allProducts = data;
             updateProductDisplay(data);
         });
 }
@@ -50,7 +55,6 @@ function updateProductDisplay(products) {
             window.location.href = `/jersey/${product.id_jersey}`;
         };
 
-        // Find the image associated with this product
         const image = allImages.find(img => img.id_jersey === product.id_jersey);
         if (image) {
             const productImage = document.createElement('img');

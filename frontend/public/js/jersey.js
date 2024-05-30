@@ -4,6 +4,37 @@ document.addEventListener('DOMContentLoaded', () => {
     displayJersey();
 });
 
+document.querySelectorAll(".size__button").forEach(button => {
+    button.addEventListener("click", (event) => {
+        document.querySelectorAll(".size__button").forEach(button => {
+            button.classList.remove("size__button--selected");
+        });
+        event.target.classList.add("size__button--selected");
+        const id = parseInt(event.target.id);
+        const jerseyId = window.location.pathname.split('/')[2];
+        fetch('http://localhost:3000/api/stock?id_jersey=' + jerseyId, {
+            credentials: 'include'
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                data.forEach(stock => {
+                    if (stock.id_size === id) {
+                        const stockDiv = document.querySelector(".product__stock");
+                        if (stock.stock === 0) {
+                            stockDiv.textContent = "Out of stock";
+                            stockDiv.style.color = "red";
+                        } else {
+                            stockDiv.textContent = "In stock : " + stock.stock;
+                            stockDiv.style.color = "green";
+                        }
+                    }
+                });
+        })
+    });
+});
+
+
 function loadSession() {
     fetch('http://localhost:3000/api/user', {
         credentials: 'include'
@@ -34,7 +65,10 @@ function displayJersey() {
                     <p>${jersey.description}</p>
                     <p>Matière : ${jersey.material}</p>
                     <p>Couleur : ${jersey.color}</p>
-                    <p id="jersey__price">${jersey.price}€</p>
+                `;
+            const productPriceDiv = document.querySelector(".product__price")
+            productPriceDiv.innerHTML = `
+                    <p>${jersey.price}€</p>
                 `;
         });
 }

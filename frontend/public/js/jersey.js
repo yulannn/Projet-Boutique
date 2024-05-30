@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
-    displayImage();
     displayJersey();
-    loadStock(3);
+    displayReviews();
 });
 
 document.querySelectorAll(".size__button").forEach(button => {
@@ -68,6 +67,7 @@ function loadSession() {
 }
 
 function displayJersey() {
+    displayImage();
     const jerseyId = window.location.pathname.split('/')[2];
     fetch(`http://localhost:3000/api/jersey?id_jersey=${jerseyId}`)
         .then(response => response.json())
@@ -88,6 +88,7 @@ function displayJersey() {
                 setReduction(jersey.id_jersey, jersey.price, jersey.id_reduction);
             }
         });
+    loadStock(3);
 }
 
 function displayImage() {
@@ -124,5 +125,40 @@ function setReduction(productId, productPrice, reductionId) {
 
                 productPriceContainer.appendChild(reductionPrice);
             }
+        });
+}
+
+function displayReviews() {
+    const jerseyId = window.location.pathname.split('/')[2];
+    fetch('http://localhost:3000/api/reviews?id_jersey=' + jerseyId)
+        .then(response => response.json())
+        .then(data => {
+            const reviewsDiv = document.querySelector(".reviews__container");
+
+            console.log(data)
+            if (data.message === "No reviews found") {
+                const noReviewDiv = document.createElement("div");
+                noReviewDiv.innerHTML = `
+                    <h5 class="no__reviews"">No reviews yet</h5>      
+                `;
+                reviewsDiv.appendChild(noReviewDiv);
+                return;
+            }
+
+            data.forEach(review => {
+                const reviewDate = new Date(review.created_at);
+                const starsText = "⭐".repeat(review.note);
+
+                const reviewDiv = document.createElement("div");
+                reviewDiv.className = "review";
+                reviewDiv.innerHTML = `
+                    <h5>${review.first_name} ${review.last_name[0]}. | ${starsText}</h5>
+                    <p>${reviewDate.toLocaleDateString()}</p>
+                    <p>${review.review_content}</p>       
+                `;
+                reviewsDiv.appendChild(reviewDiv);
+            });
+
+
         });
 }

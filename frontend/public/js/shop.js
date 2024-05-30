@@ -39,6 +39,29 @@ function displayProducts() {
         });
 }
 
+function setReduction(productId, productPrice, reductionId) {
+    const productElement = document.getElementById('jersey__' + productId);
+    fetch('http://localhost:3000/api/reductions?id_reduction=' + reductionId)
+        .then(response => response.json())
+        .then(data => {
+            const reduction = data[0];
+            const currentTime = new Date().toISOString();
+
+            if (reduction.start_date <= currentTime && reduction.end_date >= currentTime) {
+
+                const oldPrice = productElement.querySelector('p');
+                oldPrice.style.textDecoration = 'line-through';
+
+                const reducedPrice = (productPrice - (productPrice * reduction.pourcentage_reduction / 100)).toFixed(2);
+
+                const reductionPrice = document.createElement('p');
+                reductionPrice.textContent = reducedPrice + '€';
+                reductionPrice.style.color = 'green';
+
+                productElement.appendChild(reductionPrice);
+            }
+        });
+}
 function updateProductDisplay(products) {
     const productsContainer = document.getElementById('products');
     productsContainer.innerHTML = ''; // Clear previous products
@@ -47,10 +70,13 @@ function updateProductDisplay(products) {
         const productElement = document.createElement('div');
         productElement.className = 'product';
         productElement.id = 'jersey__' + product.id_jersey;
+
+
         productElement.innerHTML = `
-            <h3>${product.name}</h3>
-            <p>${product.price} €</p>
-        `;
+               <h3>${product.name}</h3>
+                <p>${product.price} €</p>
+            `;
+
         productElement.onclick = function () {
             window.location.href = `/jersey/${product.id_jersey}`;
         };
@@ -63,6 +89,9 @@ function updateProductDisplay(products) {
         }
 
         productsContainer.appendChild(productElement);
+        if (product.id_reduction !== null) {
+            setReduction(product.id_jersey, product.price, product.id_reduction);
+        }
     });
 }
 

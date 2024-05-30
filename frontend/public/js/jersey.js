@@ -84,6 +84,9 @@ function displayJersey() {
             productPriceDiv.innerHTML = `
                     <p>${jersey.price}€</p>
                 `;
+            if (jersey.id_reduction) {
+                setReduction(jersey.id_jersey, jersey.price, jersey.id_reduction);
+            }
         });
 }
 
@@ -98,4 +101,28 @@ function displayImage() {
             productImage.src = "/public/img/jersey-images/" + firstImage.url_path
             productImageDiv.appendChild(productImage)
         })
+}
+
+function setReduction(productId, productPrice, reductionId) {
+    const productPriceContainer = document.querySelector('.product__price');
+    fetch('http://localhost:3000/api/reductions?id_reduction=' + reductionId)
+        .then(response => response.json())
+        .then(data => {
+            const reduction = data[0];
+            const currentTime = new Date().toISOString();
+
+            if (reduction.start_date <= currentTime && reduction.end_date >= currentTime) {
+
+                const oldPrice = productPriceContainer.querySelector('p');
+                oldPrice.style.textDecoration = 'line-through';
+
+                const reducedPrice = (productPrice - (productPrice * reduction.pourcentage_reduction / 100)).toFixed(2);
+
+                const reductionPrice = document.createElement('p');
+                reductionPrice.textContent = reducedPrice + '€';
+                reductionPrice.style.color = 'green';
+
+                productPriceContainer.appendChild(reductionPrice);
+            }
+        });
 }

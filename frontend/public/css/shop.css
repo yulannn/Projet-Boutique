@@ -257,7 +257,7 @@ box-icon {
     align-items: center;
     gap: 1rem;
     flex-basis: calc(33.33% - 2rem);
-    padding: 1rem;
+    padding: 3rem;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid white;
@@ -274,13 +274,13 @@ box-icon {
 }
 
 .product img {
-    width: 70%;
-    height: 80%;
+    width: 65%;
+    height: 90%;
 }
 
 h3 {
     position: absolute;
-    top: 5%;
+    top: 4%;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSession();
     displayJersey();
     displayReviews();
+    addToCart();
 });
 
 document.querySelectorAll(".size__button").forEach(button => {
@@ -162,3 +163,42 @@ function displayReviews() {
 
         });
 }
+
+function getSelectedSize() {
+    const selectedSizeButton = document.querySelector('.size__button--selected');
+    return selectedSizeButton ? selectedSizeButton.textContent : null;
+}
+
+function getBasketInfo() {
+    const jerseyId = window.location.pathname.split('/')[2];
+    const selectedSize = getSelectedSize();
+
+    if (!selectedSize) {
+        console.error('No size selected');
+        return;
+    }
+
+    fetch('http://localhost:3000/api/basket?id_jersey=' + jerseyId)
+        .then(response => response.json())
+        .then(data => {
+            data.size = selectedSize;
+
+            let panier = JSON.parse(localStorage.getItem('panier')) || [];
+
+            panier.push(data);
+
+            localStorage.setItem('panier', JSON.stringify(panier));
+        })
+        .catch(error => {
+            console.error('Error fetching jersey data:', error);
+        });
+}
+
+function addToCart() {
+    const AddToCartButton = document.getElementById('add__button');
+    AddToCartButton.addEventListener('click', () => {
+        getBasketInfo();
+    });
+}
+
+

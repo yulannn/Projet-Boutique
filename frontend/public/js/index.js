@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
+    const shopButton = document.getElementById('shop__button');
+    document.getElementById('shop__button').addEventListener('click', () => {
+        window.location.href = '/shop';
+    });
 });
 
 

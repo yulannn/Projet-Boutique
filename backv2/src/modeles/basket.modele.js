@@ -10,7 +10,7 @@ class ModeleJersey {
 
     static getBasket(id_jersey, res) {
         const sqlQuery = db.format(`
-            SELECT j.name, j.price, ji.url_path
+            SELECT j.id_jersey, j.name, j.price, ji.url_path
             FROM Jersey j
             JOIN Jersey_image ji ON j.id_jersey = ji.id_jersey
             WHERE j.id_jersey = ?;

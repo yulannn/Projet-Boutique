@@ -62,10 +62,13 @@ function displayPanierItems() {
         const priceInfo = productDiv.querySelector('.product__price__info');
 
         minusButton.addEventListener('click', () => {
+            const panierItems = JSON.parse(localStorage.getItem('panier')) || [];
             let currentQuantity = parseInt(quantityNumber.textContent);
             if (currentQuantity <= 1) {
                 productContainer.removeChild(productDiv);
-                const updatedPanier = panierItems.filter(panierItem => panierItem.name !== item.name);
+                const updatedPanier = panierItems.filter(panierItem =>
+                    (panierItem.id_jersey !== item.id_jersey || panierItem.size !== item.size)
+                );
                 localStorage.setItem('panier', JSON.stringify(updatedPanier));
             } else
                 if (currentQuantity > 1) {

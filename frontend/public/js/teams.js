@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loadSession();
     fetchTeams();
+
+
 });
 
 function loadSession() {
@@ -47,7 +49,7 @@ function fetchTeams() {
             let rowContainer;
 
             data.forEach((team, index) => {
-                if (index % 4 === 0) {
+                if (index % 3 === 0) {
                     rowContainer = document.createElement('div');
                     rowContainer.classList.add('teams_row_container');
                     teamContainer.appendChild(rowContainer);
@@ -94,6 +96,9 @@ function createTeamCard(team) {
     teamCard.appendChild(teamFlag);
     teamCard.appendChild(teamLogo);
     teamCard.appendChild(teamName);
+
+    const backgroundImage = `url(/public/img/backgrounds/${team.logo_path})`;
+    teamCard.style.setProperty('--hover-background-image', backgroundImage);
 
     return teamCard;
 }

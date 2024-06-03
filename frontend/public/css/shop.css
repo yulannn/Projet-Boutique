@@ -252,7 +252,6 @@ box-icon {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    /* ou center si vous voulez centrer les éléments */
     gap: 2rem;
     margin-top: 3rem;
     margin-left: 3rem;

@@ -209,6 +209,20 @@ box-icon {
 }
 
 
+.home__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #090E16;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    padding-top: 70px;
+}
+
 /* Affichage de l'équipe */
 
 .team__head__display {
@@ -247,6 +261,23 @@ box-icon {
     color: #5f3dc4;
 }
 
+.players__display {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-basis: calc(33.33% - 2rem);
+    padding: 3rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    transition: 0.2s;
+    width: 70%;
+    font-size: 1em;
+    margin-left: 15%;
+}
 
 .player__container {
     display: flex;
@@ -263,9 +294,54 @@ box-icon {
 #teamPlayersText {
     font-size: 6rem;
     font-weight: bold;
+    text-align: center;
 }
 
 #player__flag {
     width: 3vw;
     margin-left: 1rem;
+}
+
+#teamJerseysText {
+    font-size: 6rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.jerseys__display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.jersey__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-basis: calc(33.33% - 2rem);
+    padding: 3rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    transition: 0.2s;
+    cursor: pointer;
+    width: 20%;
+    font-size: 1em;
+}
+
+.jersey__container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.jersey__container img {
+    width: 65%;
+    height: 90%;
 }

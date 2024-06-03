@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loadSession();
     fetchPlayers();
     fetchTeam();
+    fetcbJerseys();
 });
 
 function fetchTeam() {
@@ -70,10 +71,6 @@ function fetchPlayers() {
             const playersContainer = document.querySelector('.players__display');
             playersContainer.innerHTML = '';
 
-            const teamPlayers = document.createElement('h2');
-            teamPlayers.textContent = 'Joueurs';
-            teamPlayers.id = 'teamPlayersText';
-            playersContainer.appendChild(teamPlayers);
 
             data.forEach(player => {
                 const playerContainer = document.createElement('div');
@@ -98,6 +95,39 @@ function fetchPlayers() {
                 playerContainer.appendChild(playerFlag);
 
                 playersContainer.appendChild(playerContainer);
+            });
+        })
+}
+
+
+function fetcbJerseys() {
+    const teamId = window.location.pathname.split('/')[2];
+    fetch(`http://localhost:3000/api/jerseys?team_id=${teamId}`)
+        .then(response => response.json())
+        .then(data => {
+            const jerseysContainer = document.querySelector('.jerseys__display');
+            jerseysContainer.innerHTML = '';
+
+
+            data.forEach(jersey => {
+                const jerseyContainer = document.createElement('div');
+                jerseyContainer.classList.add('jersey__container');
+
+                const jerseyImage = document.createElement('img');
+                jerseyImage.src = `/public/img/jersey-images/${jersey.url_path}`;
+                jerseyImage.alt = `${jersey.name}`;
+                jerseyImage.classList.add('jersey__image');
+                jerseyContainer.appendChild(jerseyImage);
+
+                const jerseyName = document.createElement('h2');
+                jerseyName.textContent = jersey.name;
+                jerseyName.classList.add('jersey__name');
+                jerseyContainer.appendChild(jerseyName);
+
+                jerseyContainer.addEventListener('click', () => {
+                    window.location.href = `/jersey/${jersey.id_jersey}`;
+                });
+                jerseysContainer.appendChild(jerseyContainer);
             });
         })
 }

@@ -15,8 +15,15 @@ class ModeleJerseys {
     }
 
 
-    static getJerseys(res) {
+    static getJerseys(team_id, res) {
         let sqlQuery = db.format("SELECT * FROM jersey");
+
+        if (team_id) {
+            sqlQuery = db.format("SELECT jersey.*, jersey_image.url_path\n" +
+                "FROM jersey\n" +
+                "INNER JOIN jersey_image ON jersey.id_jersey = jersey_image.id_jersey\n" +
+                "WHERE jersey.team_id = ?", [team_id]);
+        }
 
         db.query(sqlQuery, (err, result) => {
             if (err) {

@@ -2,7 +2,8 @@ const Jerseys = require('../modeles/jerseys.modele');
 
 class ControllerJerseys {
     static getJerseys = (req, res) => {
-        Jerseys.getJerseys((err, result) => {
+        const team_id = req.query.team_id;
+        Jerseys.getJerseys(team_id, (err, result) => {
             if (err) {
                 if (result.message === "not found") {
                     res.status(404).send({ message: "Maillot non trouvé" });

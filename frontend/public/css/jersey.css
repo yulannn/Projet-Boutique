@@ -15,6 +15,11 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 10vh;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        #090E16;
+    background-size: 160px 160px;
 }
 
 .home__header {
@@ -24,6 +29,7 @@ body {
     height: 12vh;
     border-bottom: 1px solid #5f3dc4;
     font-style: italic;
+    background-color: #090E16;
 }
 
 .left__header__content {
@@ -262,6 +268,7 @@ box-icon {
     font-weight: bold;
 
 }
+
 .size__buttons {
     display: flex;
     gap: 1rem;
@@ -371,6 +378,7 @@ box-icon {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
 .review span {
     font-size: 0.5rem;
 }

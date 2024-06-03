@@ -74,7 +74,7 @@ function updateProductDisplay(products) {
 
         productElement.innerHTML = `
                <h3>${product.name}</h3>
-                <p>${product.price} €</p>
+                <p class="product__price">${product.price} €</p>
             `;
 
         productElement.onclick = function () {

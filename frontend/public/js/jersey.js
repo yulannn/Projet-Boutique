@@ -182,10 +182,18 @@ function getBasketInfo() {
         .then(response => response.json())
         .then(data => {
             data.size = selectedSize;
+            data.id_jersey = jerseyId;
 
             let panier = JSON.parse(localStorage.getItem('panier')) || [];
 
-            panier.push(data);
+            const existingProductIndex = panier.findIndex(item => item.id_jersey === data.id_jersey && item.size === data.size);
+
+            if (existingProductIndex !== -1) {
+                panier[existingProductIndex].quantity += 1;
+            } else {
+                data.quantity = 1;
+                panier.push(data);
+            }
 
             localStorage.setItem('panier', JSON.stringify(panier));
         })
@@ -194,11 +202,10 @@ function getBasketInfo() {
         });
 }
 
+
 function addToCart() {
-    const AddToCartButton = document.getElementById('add__button');
-    AddToCartButton.addEventListener('click', () => {
+    const addToCartButton = document.getElementById('add__button');
+    addToCartButton.addEventListener('click', () => {
         getBasketInfo();
     });
 }
-
-

@@ -19,9 +19,9 @@ body {
     justify-content: space-between;
     padding-bottom: 10vh;
     background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        #090E16;
+            linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            #090E16;
     background-size: 160px 160px;
 }
 
@@ -278,6 +278,20 @@ box-icon {
 }
 
 
+.home__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #090E16;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    padding-top: 70px;
+}
+
 .product:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -354,4 +368,55 @@ h3 {
         font-size: 1.1rem;
     }
 
+}
+
+.pagination__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#previous__page__button {
+    padding: 10px;
+    border: 3px solid #5f3dc4;
+    border-radius: 10px;
+    background-color: #090E16;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#previous__page__button:hover {
+    background-color: #5f3dc4;
+    color: white;
+}
+
+#next__page__button:hover {
+    background-color: #5f3dc4;
+    color: white;
+}
+
+#next__page__button {
+    padding: 10px;
+    border: 3px solid #5f3dc4;
+    border-radius: 10px;
+    background-color: #090E16;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#page_number {
+    padding: 10px;
+    border: 3px solid #5f3dc4;
+    border-radius: 10px;
+    background-color: #090E16;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
 }

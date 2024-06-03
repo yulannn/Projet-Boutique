@@ -1,5 +1,8 @@
 let allProducts = [];
 let allImages = [];
+const articlePerPage = 6;
+const urlParams = new URLSearchParams(window.location.search);
+const page = parseInt(urlParams.get('page')) || 1;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
@@ -35,7 +38,8 @@ function displayProducts() {
         .then(response => response.json())
         .then(data => {
             allProducts = data;
-            updateProductDisplay(data);
+            updateProductDisplay(data, page);
+            setupPagination(data.length, page);
         });
 }
 
@@ -62,20 +66,25 @@ function setReduction(productId, productPrice, reductionId) {
             }
         });
 }
-function updateProductDisplay(products) {
-    const productsContainer = document.getElementById('products');
-    productsContainer.innerHTML = ''; // Clear previous products
 
-    products.forEach(product => {
+function updateProductDisplay(products, page) {
+    const productsContainer = document.getElementById('products');
+    productsContainer.innerHTML = '';
+
+    const startIndex = (page - 1) * articlePerPage;
+    const endIndex = startIndex + articlePerPage;
+    const productsToDisplay = products.slice(startIndex, endIndex);
+
+    productsToDisplay.forEach(product => {
         const productElement = document.createElement('div');
         productElement.className = 'product';
         productElement.id = 'jersey__' + product.id_jersey;
-
 
         productElement.innerHTML = `
                <h3>${product.name}</h3>
                 <p class="product__price">${product.price} €</p>
             `;
+
 
         productElement.onclick = function () {
             window.location.href = `/jersey/${product.id_jersey}`;
@@ -95,7 +104,6 @@ function updateProductDisplay(products) {
     });
 }
 
-
 function displayImages() {
     fetch('http://localhost:3000/api/jersey_images')
         .then(response => response.json())
@@ -105,7 +113,9 @@ function displayImages() {
                 const productDiv = document.getElementById('jersey__' + image.id_jersey)
                 const productImage = document.createElement('img')
                 productImage.src = "public/img/jersey-images/" + image.url_path
-                productDiv.appendChild(productImage);
+                if (productDiv) {
+                    productDiv.appendChild(productImage);
+                }
             })
         })
 }
@@ -114,10 +124,57 @@ function filterProducts(query) {
     const filteredProducts = allProducts.filter(product => {
         return product.name.toLowerCase().includes(query.toLowerCase());
     });
-    updateProductDisplay(filteredProducts);
+    updateProductDisplay(filteredProducts, 1);
+
+
+    setupPagination(filteredProducts.length, 1, query);
 }
 
 document.getElementById('search__input').addEventListener('input', (event) => {
     const query = event.target.value;
+
     filterProducts(query);
 });
+
+function setupPagination(totalProducts, currentPage, query = '') {
+    const totalPages = Math.ceil(totalProducts / articlePerPage);
+    const pageNumbers = document.getElementById('page__number');
+
+
+    const previousButton = document.getElementById('previous__page__button');
+    const nextButton = document.getElementById('next__page__button');
+
+    previousButton.style.display = 'None';
+    nextButton.style.display = 'None';
+
+    let onQuery = false;
+    onQuery = query !== '';
+
+    if (!onQuery) {
+        pageNumbers.textContent = `${currentPage} / ${totalPages}`;
+    } else {
+        pageNumbers.textContent = '';
+    }
+
+    if (currentPage === 1) {
+        previousButton.style.display = 'None';
+    } else {
+        if (!onQuery) {
+            previousButton.style.display = 'inline-block';
+            previousButton.onclick = function () {
+                window.location.href = `?page=${currentPage - 1}`;
+            };
+        }
+    }
+
+    if (currentPage === totalPages) {
+        nextButton.style.display = 'None';
+    } else {
+        if (!onQuery) {
+            nextButton.style.display = 'inline-block';
+            nextButton.onclick = function () {
+                window.location.href = `?page=${currentPage + 1}`;
+            };
+        }
+    }
+}

@@ -11,65 +11,65 @@
 </head>
 
 <body>
-<div class="navigation-menu">
-    <ul>
-        <li class="burger__liste"><a href="/teams">Teams</a></li>
-        <li class="burger__liste"><a href="/shop">Shop</a></li>
-        <li class="burger__liste"><a id="login__burger__button" href="/login">Login</a></li>
-        <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
+    <div class="navigation-menu">
+        <ul>
+            <li class="burger__liste"><a href="/teams">Teams</a></li>
+            <li class="burger__liste"><a href="/shop">Shop</a></li>
+            <li class="burger__liste"><a id="login__burger__button" href="/login">Login</a></li>
+            <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
 
-    </ul>
-</div>
-
-<div class="panier__popup">
-    <div class="panier__popup__content">
-        <h2 class="panier__title">Panier</h2>
-        <div class="panier__popup__products" id="panier__popup__products"></div>
-        <div class="panier__popup__total">
-            <h4 class="panier__price">Total : <span id="panier__popup__total">0</span>€</h4>
-        </div>
-        <div class="panier__popup__buttons">
-            <button id="panier__popup__button__validate">Valider</button>
-            <button id="panier__popup__button__cancel">Annuler</button>
-        </div>
-    </div>
-</div>
-
-<main class="container">
-    <header class="home__header">
-        <div class="left__header__content">
-            <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
-        </div>
-        <div class="mid__header__content">
-            <a id="teams__page__button" href="/teams">Teams</a>
-            <a id="shop__page__button" href="/shop">Shop</a>
-        </div>
-        <div class="right__header__content">
-            <a id="login__button"></a>
-            <box-icon class="panier__button" name='basket' type='solid' color='#ffffff'></box-icon>
-        </div>
-        <div class="burger-menu">
-            <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
-            <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
-        </div>
-    </header>
-
-    <div class="search__bar">
-        <input type="text" id="search__input" placeholder="Rechercher un produit...">
+        </ul>
     </div>
 
-    <div class="products" id="products"></div>
-
-    <div class="pagination__container">
-        <button id="previous__page__button" class="pagination__button">⬅</button>
-        <h2 id="page__number"></h2>
-        <button id="next__page__button" class="pagination__button">⮕</button>
+    <div class="panier__popup">
+        <div class="panier__popup__content">
+            <box-icon class="invert__color" name='x'></box-icon>
+            <h2 class="panier__title">Panier</h2>
+            <div class="panier__popup__products" id="panier__popup__products"></div>
+            <div class="panier__popup__total">
+                <h4 class="panier__price">Total : <span id="panier__popup__total">0</span>€</h4>
+            </div>
+            <div class="panier__popup__buttons">
+                <button id="redirect__payment">Payment</button>
+            </div>
+        </div>
     </div>
-</main>
-<script src="/public/js/panier.js"></script>
-<script src="/public/js/burger.js"></script>
-<script src="/public/js/shop.js"></script>
-<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <main class="container">
+        <header class="home__header">
+            <div class="left__header__content">
+                <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
+            </div>
+            <div class="mid__header__content">
+                <a id="teams__page__button" href="/teams">Teams</a>
+                <a id="shop__page__button" href="/shop">Shop</a>
+            </div>
+            <div class="right__header__content">
+                <a id="login__button"></a>
+                <box-icon class="panier__button" name='basket' type='solid' color='#ffffff'></box-icon>
+            </div>
+            <div class="burger-menu">
+                <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
+                <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
+            </div>
+        </header>
+
+        <div class="search__bar">
+            <input type="text" id="search__input" placeholder="Rechercher un produit...">
+        </div>
+
+        <div class="products" id="products"></div>
+
+        <div class="pagination__container">
+            <button id="previous__page__button" class="pagination__button">⬅</button>
+            <h2 id="page__number"></h2>
+            <button id="next__page__button" class="pagination__button">⮕</button>
+        </div>
+    </main>
+    <script src="/public/js/panier.js"></script>
+    <script src="/public/js/burger.js"></script>
+    <script src="/public/js/shop.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 
 </html>

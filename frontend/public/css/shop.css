@@ -11,9 +11,9 @@
     justify-content: space-between;
     padding-bottom: 10vh;
     background:
-            linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-            linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-            #090E16;
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        #090E16;
     background-size: 160px 160px;
 }
 
@@ -47,7 +47,7 @@
 .products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     gap: 2rem;
     margin-top: 3rem;
     margin-left: 3rem;

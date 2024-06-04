@@ -52,6 +52,10 @@ app.get('/shop', (req, res) => {
     res.sendFile(__dirname + '/views/shop.html');
 });
 
+app.get('/paiement', (req, res) => {
+    res.sendFile(__dirname + '/views/paiement.html');
+});
+
 
 // Jersey page
 

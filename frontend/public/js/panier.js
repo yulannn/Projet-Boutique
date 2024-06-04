@@ -2,7 +2,19 @@ const panier = document.querySelector('.panier__popup');
 const buttonPanier = document.querySelector('.panier__button');
 const productContainer = document.querySelector('.panier__popup__products');
 const croix = document.querySelector('.invert__color');
+const totalElement = document.getElementById('panier__popup__total');
+const paymentDirection = document.getElementById('redirect__payment')
 
+paymentDirection.addEventListener('click', () => {
+    if (panier.length !== 0) {
+        window.location.href = '/paiement';
+        paymentDirection.classList.remove('invalid__redirect__payment');
+        paymentDirection.classList.add('valid__redirect__payment');
+    } else {
+        paymentDirection.classList.remove('valid__redirect__payment');
+        paymentDirection.classList.add('invalid__redirect__payment');
+    }
+});
 
 buttonPanier.addEventListener('click', () => {
     if (panier.style.right === '0px') {
@@ -16,7 +28,6 @@ croix.addEventListener('click', () => {
     closePanier();
 });
 
-
 function openPanier() {
     panier.style.right = '0';
     panier.style.transition = 'right 0.5s';
@@ -27,7 +38,6 @@ function openPanier() {
     displayPanierItems();
 }
 
-
 function closePanier() {
     panier.style.right = '-45%';
     buttonPanier.style.color = 'white';
@@ -37,17 +47,21 @@ function closePanier() {
 function displayPanierItems() {
     const panierItems = JSON.parse(localStorage.getItem('panier')) || [];
     productContainer.innerHTML = '';
+    let total = 0; // Variable to keep track of the total price
 
     panierItems.forEach(item => {
         const productDiv = document.createElement('div');
         productDiv.className = 'panier__product';
+        const itemTotalPrice = (item.price * item.quantity).toFixed(2);
+        total += parseFloat(itemTotalPrice); // Update the total price
+
         productDiv.innerHTML = `
             <img class="panier__img" src="/public/img/jersey-images/${item.url_path}" alt="${item.name}"/>
             <div class="product__details">
                 <p class="product__name">${item.name}</p> 
                 <p class="product__size">${item.size}</p>
             </div>
-            <p class="product__price__info" data-initial-price="${item.price}">${item.price}€</p>
+            <p class="product__price__info" data-initial-price="${item.price}">${itemTotalPrice}€</p>
             <div class="product__quantity">
                 <button class="quantity__minus">-</button>
                 <span class="quantity__number">${item.quantity}</span>
@@ -62,7 +76,6 @@ function displayPanierItems() {
         const priceInfo = productDiv.querySelector('.product__price__info');
 
         minusButton.addEventListener('click', () => {
-            const panierItems = JSON.parse(localStorage.getItem('panier')) || [];
             let currentQuantity = parseInt(quantityNumber.textContent);
             if (currentQuantity <= 1) {
                 productContainer.removeChild(productDiv);
@@ -70,31 +83,42 @@ function displayPanierItems() {
                     (panierItem.id_jersey !== item.id_jersey || panierItem.size !== item.size)
                 );
                 localStorage.setItem('panier', JSON.stringify(updatedPanier));
-            } else
-                if (currentQuantity > 1) {
-                    quantityNumber.textContent = currentQuantity - 1;
-                    updatePrice(priceInfo, currentQuantity - 1);
-                }
+                displayPanierItems(); // Recalculate the total
+            } else {
+                quantityNumber.textContent = currentQuantity - 1;
+                updatePrice(priceInfo, currentQuantity - 1);
+                updatePanierItemQuantity(item.id_jersey, item.size, currentQuantity - 1);
+                displayPanierItems(); // Recalculate the total
+            }
         });
 
         plusButton.addEventListener('click', () => {
             let currentQuantity = parseInt(quantityNumber.textContent);
-            localStorage.setItem('panier', JSON.stringify(panierItems.map(panierItem => {
-                if (panierItem.name === item.name) {
-                    panierItem.quantity = currentQuantity + 1;
-                }
-                return panierItem;
-            })));
             quantityNumber.textContent = currentQuantity + 1;
             updatePrice(priceInfo, currentQuantity + 1);
+            updatePanierItemQuantity(item.id_jersey, item.size, currentQuantity + 1);
+            displayPanierItems(); // Recalculate the total
         });
     });
+
+    totalElement.textContent = total.toFixed(2); // Update the total price in the UI
 }
 
 function updatePrice(priceInfo, quantity) {
     const initialPrice = parseFloat(priceInfo.getAttribute('data-initial-price'));
     const newPrice = initialPrice * quantity;
     priceInfo.textContent = `${newPrice.toFixed(2)}€`;
+}
+
+function updatePanierItemQuantity(id_jersey, size, quantity) {
+    let panierItems = JSON.parse(localStorage.getItem('panier')) || [];
+    panierItems = panierItems.map(panierItem => {
+        if (panierItem.id_jersey === id_jersey && panierItem.size === size) {
+            panierItem.quantity = quantity;
+        }
+        return panierItem;
+    });
+    localStorage.setItem('panier', JSON.stringify(panierItems));
 }
 
 if (panier.style.right === '0px') {

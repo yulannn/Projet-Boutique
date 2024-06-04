@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loadSession();
     fetchTeams();
-
-
 });
 
 function loadSession() {

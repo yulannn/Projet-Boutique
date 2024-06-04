@@ -330,9 +330,29 @@ box-icon {
 #serveurOrigin {
     background-color: #5f3dc4;
     color: white;
-    padding: 8px;
+    padding: 8px 30px 8px 8px;
     border-radius: 10px;
     font-size: 1.2rem;
     border: solid white 2px;
     text-decoration: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+    cursor: pointer;
+}
+
+#serveurOrigin:focus,
+#serveurOrigin:active {
+    outline: none;
+    background-color: #5f3dc4;
+    color: white;
+    border: solid white 2px;
+}
+
+select::-ms-expand {
+    display: none;
 }

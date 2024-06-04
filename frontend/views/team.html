@@ -1,60 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team</title>
-    <link rel="stylesheet" href="/public/css/team.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team</title>
+        <link rel="stylesheet" href="/public/css/team.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    </head>
 
-<body>
-<div class="navigation-menu">
-    <ul>
-        <li class="burger__liste"><a href="/teams">Teams</a></li>
-        <li class="burger__liste"><a href="/shop">Shop</a></li>
-        <li class="burger__liste"><a id="login__burger__button" href="/login">Login</a></li>
-        <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
+    <body>
+    <div class="navigation-menu">
+        <ul>
+            <li class="burger__liste"><a href="/teams">Teams</a></li>
+            <li class="burger__liste"><a href="/shop">Shop</a></li>
+            <li class="burger__liste"><a id="login__burger__button" href="/login">Login</a></li>
+            <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
 
-    </ul>
-</div>
-
-<main class="container">
-    <header class="home__header">
-        <div class="left__header__content">
-            <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
-        </div>
-        <div class="mid__header__content">
-            <a id="teams__page__button" href="/teams">Teams</a>
-            <a id="shop__page__button" href="/shop">Shop</a>
-        </div>
-        <div class="right__header__content">
-            <a id="login__button"></a>
-            <box-icon class="panier__button" name='basket' type='solid' color='#ffffff'></box-icon>
-        </div>
-        <div class="burger-menu">
-            <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
-            <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
-        </div>
-    </header>
-
-    <div class="back__button">
-        <a href="/teams" class="back__button__link">Retour</a>
+        </ul>
     </div>
-    <div class="team__display"></div>
 
-    <h2 id="teamPlayersText">Players</h2>
+    <main class="container">
+        <header class="home__header">
+            <div class="left__header__content">
+                <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
+            </div>
+            <div class="mid__header__content">
+                <a id="teams__page__button" href="/teams">Teams</a>
+                <a id="shop__page__button" href="/shop">Shop</a>
+            </div>
+            <div class="right__header__content">
+                <a id="login__button"></a>
+                <box-icon class="panier__button" name='basket' type='solid' color='#ffffff'></box-icon>
+            </div>
+            <div class="burger-menu">
+                <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
+                <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
+            </div>
+        </header>
 
-    <div class="players__display"></div>
+        <!--<div class="back__button">
+            <a href="/teams" class="back__button__link">Retour</a>
+        </div>-->
 
-    <h2 id="teamJerseysText">Jerseys</h2>
+        <div class="team__display"></div>
 
-    <div class="jerseys__display"></div>
-</main>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
 
-<script src="/public/js/team.js"></script>
-<script src="/public/js/burger.js"></script>
-<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-</body>
+                <div class="swiper-slide">
+                    <h2 id="teamPlayersText">Players</h2>
+                    <div class="players__display"></div>
+                </div>
 
-</html>
+                <div class="swiper-slide">
+                    <h2 id="teamJerseysText">Jerseys</h2>
+                    <div class="jerseys__display"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <script src="/public/js/team.js"></script>
+    <script src="/public/js/burger.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    </body>
+
+    </html>

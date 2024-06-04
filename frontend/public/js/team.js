@@ -1,8 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
     loadSession();
-    fetchPlayers();
     fetchTeam();
-    fetcbJerseys();
+    fetchPlayers();
+    fetchJerseys();
+
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 });
 
 function fetchTeam() {
@@ -25,10 +37,10 @@ function fetchTeam() {
             headDisplay.appendChild(logoImg);
 
 
-            /*const teamName = document.createElement('h1');
+            const teamName = document.createElement('h1');
             teamName.textContent = data.name;
             teamName.id = 'teamName';
-            headDisplay.appendChild(teamName);*/
+            headDisplay.appendChild(teamName);
 
             teamContainer.appendChild(headDisplay);
 
@@ -71,6 +83,8 @@ function fetchPlayers() {
             const playersContainer = document.querySelector('.players__display');
             playersContainer.innerHTML = '';
 
+            const infosContainer = document.createElement('div');
+            infosContainer.classList.add('infos__container');
 
             data.forEach(player => {
                 const playerContainer = document.createElement('div');
@@ -94,13 +108,33 @@ function fetchPlayers() {
                 playerFlag.id = 'player__flag';
                 playerContainer.appendChild(playerFlag);
 
-                playersContainer.appendChild(playerContainer);
+                playerContainer.addEventListener('click', () => {
+                    const imageContainer = document.querySelector('#player__image');
+                    imageContainer.src = `/public/img/players-images/${player.pseudo}.webp`;
+                    imageContainer.alt = `Image of ${data[0].pseudo}`;
+                });
+
+                infosContainer.appendChild(playerContainer);
             });
+
+            playersContainer.appendChild(infosContainer);
+
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image__container');
+
+            const defaultImage = document.createElement('img');
+            defaultImage.src = `/public/img/players-images/${data[0].pseudo}.webp`;
+            defaultImage.alt = `Image of ${data[0].pseudo}`;
+            defaultImage.classList.add('player__image');
+            defaultImage.id = 'player__image';
+            imageContainer.appendChild(defaultImage);
+
+            playersContainer.appendChild(imageContainer);
         })
 }
 
 
-function fetcbJerseys() {
+function fetchJerseys() {
     const teamId = window.location.pathname.split('/')[2];
     fetch(`http://localhost:3000/api/jerseys?team_id=${teamId}`)
         .then(response => response.json())

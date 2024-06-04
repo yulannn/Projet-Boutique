@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchPlayers();
     fetchJerseys();
 
+
     const swiper = new Swiper('.swiper-container', {
         loop: true,
         pagination: {

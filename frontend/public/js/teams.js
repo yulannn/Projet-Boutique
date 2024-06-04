@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     const teamOrigin = document.getElementById('serveurOrigin');
-
     teamOrigin.addEventListener('change', fetchTeams);
 
     loadSession();

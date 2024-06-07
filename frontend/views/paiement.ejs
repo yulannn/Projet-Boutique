@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/public/css/paiement.css">
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/panier.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
 </head>
-
 <body>
-    <h1>page paiement</h1>
-</body>
 
+<%- include('burger_menu.ejs') %>
+
+<%- include('panier.ejs') %>
+
+<main class="container">
+
+    <%- include('header.ejs') %>
+    <div class="payment__container">
+        <div class="payment__infos">
+            <div class="payment__amount">
+                <h2>Payment page</h2>
+                <p>Amount : 299.99€</p>
+            </div>
+            <div class="card__infos__container">
+                <h2 class="card__info__text">Name on card</h2>
+                <input type="text" class="card__input" placeholder="John Doe">
+                <h2 class="card__info__text">Card number</h2>
+                <input type="text" class="card__input" placeholder="1234 5678 9101 1121">
+                <div class="card__more__infos">
+                    <div class="card__more__infos__left">
+                        <h2 class="card__info__text">Expiry date</h2>
+                        <input type="text" class="card__input" placeholder="MM/YY">
+                    </div>
+                    <div class="card__more__infos__left">
+                        <h2 class="card__info__text">CVV</h2>
+                        <input type="text" class="card__input" placeholder="123">
+                    </div>
+                </div>
+                <div class="payment__btn__container">
+                    <button class="pay__btn">Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/public/js/panier.js"></script>
+<script src="/public/js/paiement.js"></script>
+<script src="/public/js/burger.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+</body>
 </html>

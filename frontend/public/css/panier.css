@@ -89,6 +89,7 @@
 }
 
 .panier__img {
+    cursor: pointer;
     width: 100px;
     height: 100px;
 }
@@ -113,6 +114,7 @@
 }
 
 button.valid__payment {
+    color: white;
     padding: 5px 20px;
     background-color: rgb(11, 236, 11);
     border-radius: 10px;
@@ -122,11 +124,17 @@ button.valid__payment {
 
 button.invalid__payment {
     padding: 5px 20px;
-    background-color: red;
+    background-color: #d3d3d3;
+    color: #a9a9a9;
     border-radius: 10px;
     font-weight: bold;
     cursor: not-allowed;
+    border: 1px solid #b0b0b0;
+    box-shadow: none;
+    opacity: 0.6;
+    pointer-events: none;
 }
+
 
 @media only screen and (max-width: 431px) {
     .panier__popup{

@@ -1,0 +1,81 @@
+
+.payment__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.payment__infos {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(95, 61, 196, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #5F3dc4;
+    margin-top: 20px;
+}
+
+.card__info__text {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: white;
+}
+
+.card__more__infos {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.pay__btn {
+    background-color: #5F3dc4;
+    border: 2px solid white;
+    width: 30%;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.pay__btn:hover {
+    background-color: white;
+    color: #5F3dc4;
+    border: 2px solid #5F3dc4;
+}
+.payment__amount {
+    color: black;
+}
+
+.payment__amount {
+    color: white;
+}
+
+.payment__amount h2 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.payment__amount p {
+    margin-top: 10px;
+}
+
+.card__more__infos__left .card__input {
+    width: 90%;
+    padding: 10px;
+}
+
+.card__input {
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.payment__btn__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

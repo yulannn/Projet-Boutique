@@ -83,8 +83,9 @@ function displayPanierItems() {
         const itemTotalPrice = (item.price * item.quantity).toFixed(2);
         total += parseFloat(itemTotalPrice);
 
-        productDiv.innerHTML = `
-            <img class="panier__img" src="/public/img/jersey-images/${item.url_path}" alt="${item.name}"/>
+
+        productDiv.innerHTML += `
+            <img class="panier__img" src="/public/img/jersey-images/${item.url_path}" alt="Maillot ${item.name}" onclick="redirectJersey(${item.id_jersey})">
             <div class="product__details">
                 <p class="product__name">${item.name}</p> 
                 <p class="product__size">${item.size}</p>
@@ -149,6 +150,11 @@ function updatePanierItemQuantity(id_jersey, size, quantity) {
     localStorage.setItem('panier', JSON.stringify(panierItems));
 }
 
+function redirectJersey(idJersey) {
+    window.location.href = `/jersey/${idJersey}`;
+}
+
 if (panier.style.right === '0px') {
     displayPanierItems();
 }
+

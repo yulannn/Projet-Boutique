@@ -7,7 +7,15 @@
     font-size: 40px;
 }
 
+#infos {
+    cursor: pointer;
+}
+
+#activities {
+    cursor: pointer;
+}
 /* Affichage du profile */
+
 
 .display__profile {
     display: flex;

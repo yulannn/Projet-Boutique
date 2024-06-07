@@ -135,3 +135,28 @@
 select::-ms-expand {
     display: none;
 }
+
+
+@media screen and (max-width: 450px) {
+    #serveurOrigin {
+        padding: 8px 20px 8px 8px;
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 1050px) and (min-width: 450px) {
+    #serveurOrigin {
+        margin-top: 6rem;
+    }
+
+    .team__card {
+        width: 28%;
+        margin: 0 auto;
+        height: 250px;
+    }
+
+    .teams_row_container {
+        gap: 1.5rem;
+    }
+
+}

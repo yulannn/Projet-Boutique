@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayJersey();
     displayReviews();
     addToCart();
+    addToRecommanded();
 });
 
 document.querySelectorAll(".size__button").forEach(button => {
@@ -208,4 +209,31 @@ function addToCart() {
     addToCartButton.addEventListener('click', () => {
         getBasketInfo();
     });
+}
+
+
+function addToRecommanded() {
+    const recommandedContainer = document.querySelector('.recommanded__container');
+    fetch('http://localhost:3000/api/randomJerseys?limit=5')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(jersey => {
+                const jerseyDiv = document.createElement('div');
+                jerseyDiv.className = 'recommanded__product';
+                jerseyDiv.innerHTML = `
+                    <a href="/jersey/${jersey.id_jersey}">
+                        <img class="recommanded__img" src="/public/img/jersey-images/${jersey.url_path}" alt="${jersey.name}">
+                        <h5>${jersey.name}</h5>
+                        <p>${jersey.price}€</p>
+                    </a>
+                `;
+                recommandedContainer.appendChild(jerseyDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching random jerseys:', error);
+        });
+
+
+
 }

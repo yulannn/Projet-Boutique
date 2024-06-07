@@ -1,69 +1,54 @@
 import express from 'express';
 import { join, dirname } from 'path';
-const app = express();
 import { fileURLToPath } from 'url';
 
+const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+app.set('view engine', 'ejs');
+app.set('views', join(__dirname, 'views'));
 
 app.use('/public/', express.static(join(__dirname, 'public')));
 
 app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/views/register.html');
+    res.render('register');
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/views/login.html');
-});
-
-app.get('/addreduction', (req, res) => {
-    res.sendFile(__dirname + '/views/createPromo.html');
+    res.render('login');
 });
 
 app.get('/profile', (req, res) => {
-    res.sendFile(__dirname + '/views/profile.html');
+    res.render('profile');
 });
-
-
-// Home page
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html');
+    res.render('index');
 });
-
-// Teams Page
 
 app.get('/teams', (req, res) => {
-
-    res.sendFile(__dirname + '/views/teams.html');
+    res.render('teams');
 });
-
-
-// Team Page
 
 app.get('/team/:id', (req, res) => {
-    res.sendFile(__dirname + '/views/team.html');
+    res.render('team', { id: req.params.id });
 });
 
-
-// Shop page
-
 app.get('/shop', (req, res) => {
-    res.sendFile(__dirname + '/views/shop.html');
+    res.render('shop');
 });
 
 app.get('/paiement', (req, res) => {
-    res.sendFile(__dirname + '/views/paiement.html');
+    res.render('paiement');
 });
 
-
-// Jersey page
-
 app.get('/jersey/:id', (req, res) => {
-    res.sendFile(__dirname + '/views/jersey.html')
+    res.render('jersey', { id: req.params.id });
 });
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+

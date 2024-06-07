@@ -7,37 +7,17 @@
     <title>Boutique</title>
     <link rel="stylesheet" href="/public/css/header.css">
     <link rel="stylesheet" href="/public/css/jersey.css">
+    <link rel="stylesheet" href="/public/css/panier.css">
 </head>
 
 <body>
-<div class="navigation-menu">
-    <ul>
-        <li class="burger__liste"><a href="/teams">Teams</a></li>
-        <li class="burger__liste"><a href="/shop">Shop</a></li>
-        <li class="burger__liste"><a id="login__burger__button" href="/login">Login</a></li>
-        <li class="burger__liste"><box-icon name='basket' type='solid' color='#000000'></box-icon></li>
 
-    </ul>
-</div>
+<%- include('burger_menu.ejs') %>
+
+<%- include('panier.ejs') %>
 
 <main class="container">
-    <header class="home__header">
-        <div class="left__header__content">
-            <a href="/" class="purple__title">Jersey<span class="white__title">shop</span></a>
-        </div>
-        <div class="mid__header__content">
-            <a id="teams__page__button" href="/teams">Teams</a>
-            <a id="shop__page__button" href="/shop">Shop</a>
-        </div>
-        <div class="right__header__content">
-            <a id="login__button"></a>
-            <box-icon class="panier__button" name='basket' type='solid' color='#ffffff'></box-icon>
-        </div>
-        <div class="burger-menu">
-            <box-icon id="basket-button" name='basket' type='solid' color='#ffffff'></box-icon>
-            <box-icon id='burger-button' name='menu' rotate='180' color='#ffffff' onclick="openBurger()"></box-icon>
-        </div>
-    </header>
+    <%- include('header.ejs') %>
 
     <div class="jersey__container">
         <div class="product__image"></div>
@@ -74,6 +54,7 @@
 
 </main>
 
+<script src="/public/js/panier.js"></script>
 <script src="/public/js/burger.js"></script>
 <script src="/public/js/jersey.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

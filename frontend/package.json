@@ -12,6 +12,7 @@
     "@faker-js/faker": "^8.4.1",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",

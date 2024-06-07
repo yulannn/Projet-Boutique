@@ -196,3 +196,7 @@ box-icon {
 .container {
     padding-top: 70px;
 }
+
+#panier__button {
+    cursor: pointer;
+}

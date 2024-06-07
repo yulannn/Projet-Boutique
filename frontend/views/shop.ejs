@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique</title>
+    <link rel="stylesheet" href="/public/css/shop.css">
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/panier.css">
+</head>
+
+<body>
+    <%- include('burger_menu.ejs') %>
+
+    <%- include('panier.ejs') %>
+
+    <main class="container">
+        <%- include('header.ejs') %>
+        <div class="search__bar">
+            <input type="text" id="search__input" placeholder="Rechercher un produit...">
+        </div>
+
+        <div class="products" id="products"></div>
+
+        <div class="pagination__container">
+            <button id="previous__page__button" class="pagination__button">⬅</button>
+            <h2 id="page__number"></h2>
+            <button id="next__page__button" class="pagination__button">⮕</button>
+        </div>
+    </main>
+    <script src="/public/js/panier.js"></script>
+    <script src="/public/js/burger.js"></script>
+    <script src="/public/js/shop.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>

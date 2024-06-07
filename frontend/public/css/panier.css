@@ -112,7 +112,7 @@
     font-weight: bold;
 }
 
-button.valid__redirect__payment {
+button.valid__payment {
     padding: 5px 20px;
     background-color: rgb(11, 236, 11);
     border-radius: 10px;
@@ -120,6 +120,10 @@ button.valid__redirect__payment {
     cursor: pointer;
 }
 
-button.invalid__redirect__payment {
+button.invalid__payment {
+    padding: 5px 20px;
     background-color: red;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: not-allowed;
 }

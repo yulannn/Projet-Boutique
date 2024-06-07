@@ -1,22 +1,20 @@
 const panier = document.querySelector('.panier__popup');
-const buttonPanier = document.querySelector('.panier__button');
+const buttonPanier = document.getElementById('panier__button');
 const productContainer = document.querySelector('.panier__popup__products');
 const croix = document.querySelector('.invert__color');
 const totalElement = document.getElementById('panier__popup__total');
 const paymentDirection = document.getElementById('redirect__payment')
 
 paymentDirection.addEventListener('click', () => {
-    if (panier.length !== 0) {
-        window.location.href = '/paiement';
-        paymentDirection.classList.remove('invalid__redirect__payment');
-        paymentDirection.classList.add('valid__redirect__payment');
-    } else {
-        paymentDirection.classList.remove('valid__redirect__payment');
-        paymentDirection.classList.add('invalid__redirect__payment');
+    const panierItems = JSON.parse(localStorage.getItem('panier')) || [];
+    if (panierItems.length === 0) {
+        return;
     }
+    window.location.href = '/paiement';
 });
 
 buttonPanier.addEventListener('click', () => {
+    console.log("cliqué")
     if (panier.style.right === '0px') {
         closePanier();
     } else {
@@ -35,8 +33,10 @@ function openPanier() {
         buttonPanier.style.color = 'black';
         buttonPanier.innerText = 'x';
     }, 200);
+
     displayPanierItems();
 }
+
 
 function closePanier() {
     panier.style.right = '-45%';
@@ -47,13 +47,22 @@ function closePanier() {
 function displayPanierItems() {
     const panierItems = JSON.parse(localStorage.getItem('panier')) || [];
     productContainer.innerHTML = '';
-    let total = 0; // Variable to keep track of the total price
+
+    if (panierItems.length === 0) {
+        paymentDirection.classList.remove('valid__payment')
+        paymentDirection.classList.add('invalid__payment')
+    } else {
+        paymentDirection.classList.remove('invalid__payment')
+        paymentDirection.classList.add('valid__payment')
+    }
+
+    let total = 0;
 
     panierItems.forEach(item => {
         const productDiv = document.createElement('div');
         productDiv.className = 'panier__product';
         const itemTotalPrice = (item.price * item.quantity).toFixed(2);
-        total += parseFloat(itemTotalPrice); // Update the total price
+        total += parseFloat(itemTotalPrice);
 
         productDiv.innerHTML = `
             <img class="panier__img" src="/public/img/jersey-images/${item.url_path}" alt="${item.name}"/>

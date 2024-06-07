@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/panier.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+</head>
+<body>
+
+<%- include('burger_menu.ejs') %>
+
+<%- include('panier.ejs') %>
+
+<main class="container">
+
+    <%- include('header.ejs') %>
+
+    <div class="content-div">
+        <h1 class="title">Victory starts here</h1>
+        <h2 class="description">Welcome to the world's leading jersey shop</h2>
+        <div class="main__image__container">
+            <img src="/public/img/cup.png" alt="Jersey">
+        </div>
+        <div class="bottom__content">
+            <h3 class="bottom__title">Get your <span>jersey</span> now and join the <span>adventure</span> !</h3>
+            <img id="shop__button" src="/public/img/shop.png" alt="Shop">
+        </div>
+    </div>
+</main>
+
+<script src="/public/js/panier.js"></script>
+<script src="/public/js/index.js"></script>
+<script src="/public/js/burger.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+</html>

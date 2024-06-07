@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/teams.css">
+    <link rel="stylesheet" href="/public/css/panier.css">
+</head>
+
+<body>
+    <%- include('burger_menu.ejs') %>
+
+    <%- include('panier.ejs') %>
+
+    <main class="container">
+        <%- include('header.ejs') %>
+
+        <div class="team__filter">
+            <select name="serveurOrigin" id="serveurOrigin">
+                <option value="all">Tous les serveurs</option>
+                <option value="coreen">coréen</option>
+                <option value="chine">chine</option>
+                <option value="europe">europe</option>
+                <option value="amerique">amérique</option>
+            </select>
+        </div>
+        <div id="teamContainer" class="all__teams__container"></div>
+        <div class="error__message"></div>
+    </main>
+
+    <script src="/public/js/panier.js"></script>
+    <script src="/public/js/teams.js"></script>
+    <script src="/public/js/burger.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>

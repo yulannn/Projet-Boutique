@@ -98,12 +98,35 @@ h3 {
     transform: translateX(-50%);
 }
 
+.reduction__price {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media only screen and (max-width: 431px) {
+
+    #search__input {
+        margin-top: 2rem;
+        width: 80%;
+    }
+
     .products {
         margin-left: 1rem;
         margin-right: 1rem;
         gap: 1.5rem;
         justify-content: center;
+    }
+
+    .product img {
+        width: 150%;
+        height: 90%;
+    }
+
+    .reduction__price {
+        bottom: 14%;
+        font-size: 0.8rem;
     }
 
     .product {
@@ -133,7 +156,13 @@ h3 {
 
 }
 
-@media screen and (max-width: 1024px) and (min-width: 769px) {
+@media screen and (max-width: 1050px) and (min-width: 760px) {
+
+    #search__input {
+        margin-top: 5rem;
+        width: 80%;
+    }
+
     .products {
         margin-left: 1rem;
         margin-right: 1rem;

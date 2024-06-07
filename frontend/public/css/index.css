@@ -1,5 +1,5 @@
 .title {
-    margin-top: 5rem;
+    margin-top: 6.5rem;
     font-size: 4.5rem;
     font-weight: bold;
     text-align: center;
@@ -73,6 +73,18 @@
 .burger__liste a {
     color: black;
     text-decoration: none;
+}
+
+@media screen and (max-width: 1050px) {
+    .title {
+        font-size: 3rem;
+        margin-top: 8rem;
+    }
+
+    .bottom__content img {
+        width: 70%;
+    }
+
 }
 
 

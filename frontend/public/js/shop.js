@@ -57,10 +57,12 @@ function setReduction(productId, productPrice, reductionId) {
                 oldPrice.style.textDecoration = 'line-through';
 
                 const reducedPrice = (productPrice - (productPrice * reduction.pourcentage_reduction / 100)).toFixed(2);
-
                 const reductionPrice = document.createElement('p');
                 reductionPrice.textContent = reducedPrice + '€';
                 reductionPrice.style.color = 'green';
+                reductionPrice.classList.add('reduction__price');
+
+
 
                 productElement.appendChild(reductionPrice);
             }

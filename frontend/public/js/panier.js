@@ -1,5 +1,7 @@
 const panier = document.querySelector('.panier__popup');
 const buttonPanier = document.getElementById('panier__button');
+const buttonPanierMobile = document.getElementById('panier__button__mobile');
+const buttonPanierReduit = document.getElementById('panier__button__reduit');
 const productContainer = document.querySelector('.panier__popup__products');
 const croix = document.querySelector('.invert__color');
 const totalElement = document.getElementById('panier__popup__total');
@@ -22,6 +24,23 @@ buttonPanier.addEventListener('click', () => {
     }
 });
 
+buttonPanierReduit.addEventListener('click', () => {
+    console.log("cliqué")
+    if (panier.style.right === '0px') {
+        closePanier();
+    } else {
+        openPanier();
+    }
+});
+
+buttonPanierMobile.addEventListener('click', () => {
+    console.log("cliqué")
+    if (panier.style.right === '0px') {
+        closePanier();
+    } else {
+        openPanier();
+    }
+});
 croix.addEventListener('click', () => {
     closePanier();
 });

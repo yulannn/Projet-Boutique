@@ -22,25 +22,39 @@
         <div class="payment__infos">
             <div class="payment__amount">
                 <h2>Payment page</h2>
-                <p>Amount : 299.99€</p>
+                <p id="amount__panier"></p>
             </div>
             <div class="card__infos__container">
-                <h2 class="card__info__text">Name on card</h2>
-                <input type="text" class="card__input" placeholder="John Doe">
+                <div class="card__more__infos">
+
+                    <div class="card__more__infos__left">
+                        <h2 class="card__info__text">Prénom</h2>
+                        <input id="first__name" type="text" class="card__input" placeholder="John">
+                    </div>
+                    <div class="card__more__infos__left">
+                        <h2 class="card__info__text">Nom</h2>
+                        <input id="last__name" type="text" class="card__input" placeholder="Doe">
+                    </div>
+                </div>
                 <h2 class="card__info__text">Card number</h2>
-                <input type="text" class="card__input" placeholder="1234 5678 9101 1121">
+                <input id="cardNumber" type="text" class="card__input" placeholder="1234 5678 9101 1121">
                 <div class="card__more__infos">
                     <div class="card__more__infos__left">
                         <h2 class="card__info__text">Expiry date</h2>
-                        <input type="text" class="card__input" placeholder="MM/YY">
+                        <input id="cardExpiration" type="text" class="card__input" placeholder="MM/YY">
                     </div>
                     <div class="card__more__infos__left">
-                        <h2 class="card__info__text">CVV</h2>
-                        <input type="text" class="card__input" placeholder="123">
+                        <h2 class="card__info__text">CVC</h2>
+                        <input id="cardCvc" type="text" class="card__input" placeholder="123">
                     </div>
                 </div>
+                <div class="shipping__infos">
+                    <h2 class="card__info__text">Shipping address</h2>
+                    <input id="card__number" type="text" class="card__input" placeholder="6 Rue Miguel, Martigues">
+                </div>
+                <h2 id="error__message" class="error__message"></h2>
                 <div class="payment__btn__container">
-                    <button class="pay__btn">Pay</button>
+                    <button id="paymentButton" class="pay__btn">Pay</button>
                 </div>
             </div>
         </div>

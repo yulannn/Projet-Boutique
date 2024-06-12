@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/public/css/profile.css">
     <link rel="stylesheet" href="/public/css/panier.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -27,28 +28,32 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="display__profile">
-                        <div class="infos__display">
-                            <p id="first__name"></p>
-                            <p id="created__at"></p>
-                            <a id="email"></a>
-                            <a id="reset__pwd">Edit password</a>
-                            <a id="logout__button">Déconnexion</a>
-                        </div>
-                        <div class="stats__display">
-                            <div class="info__text__display">
-                                <p id="total__orders">2</p>
-                                <p>Orders</p>
+                    <div class="profile-slide">
+                        <div class="display__profile">
+                            <div class="infos__display">
+                                <p id="first__name"></p>
+                                <p id="created__at"></p>
+                                <a id="email"></a>
+                                <a id="reset__pwd">Edit password</a>
+                                <a id="logout__button">Déconnexion</a>
                             </div>
-                            <div class="info__text__display">
-                                <p id="total__reviews">3</p>
-                                <p>Reviews</p>
-                            </div>
+                            <div class="stats__display">
+                                <div class="info__text__display">
+                                    <p id="total__orders">2</p>
+                                    <p>Orders</p>
+                                </div>
+                                <div class="info__text__display">
+                                    <p id="total__reviews">3</p>
+                                    <p>Reviews</p>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">
+                    <div class="activities__container"></div>
+                </div>
             </div>
         </div>
 

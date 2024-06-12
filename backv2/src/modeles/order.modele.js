@@ -17,6 +17,22 @@ class ModeleOrder {
             callback(false, { message: 'Commande ajoutée', order_id: results.insertId });
         });
     }
+
+    static getAllOrders(id_account, callback) {
+        let sqlQuery = 'SELECT * FROM orders';
+
+        if (id_account) {
+            sqlQuery = `SELECT * FROM orders WHERE id_account = ${id_account}`;
+        }
+
+        db.query(sqlQuery, (error, results) => {
+            if (error) {
+                callback(true, {message: 'Erreur interne du serveur'});
+                return;
+            }
+            callback(false, results);
+        });
+    }
 }
 
 

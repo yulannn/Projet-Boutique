@@ -12,6 +12,17 @@ class ControllerOrder {
             res.status(201).send({ message: "Commande ajoutée", order_id: result.order_id });
         });
     }
+
+    static getAllOrders = (req, res) => {
+        const id_account = req.query.id_account;
+        Order.getAllOrders(id_account, (err, result) => {
+            if (err) {
+                res.status(500).send({ message: "Erreur lors de la récupération des commandes" });
+                return;
+            }
+            res.status(200).send(result);
+        });
+    }
 }
 
 module.exports = ControllerOrder;

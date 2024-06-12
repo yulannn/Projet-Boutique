@@ -2,6 +2,16 @@ var swiper = new Swiper(".mySwiper", {});
 const infos = document.querySelector("#infos");
 const activities = document.querySelector("#activities");
 
+function convertDate(dateString) {
+    const date = new Date(dateString);
+
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+
+    return `${day}/${month}/${year}`;
+}
+
 infos.addEventListener("click", function () {
     swiper.slideTo(0);
 });
@@ -79,6 +89,36 @@ function getProfile() {
         .catch(error => console.error('Error fetching profile:', error));
 }
 
+function getActivities(id_account) {
+    fetch('http://localhost:3000/api/order?id_account=' + id_account, {
+        credentials: 'include',
+        method: 'GET'
+    })
+        .then(response => response.json())
+        .then(data => {
+            const activities = document.querySelector(".activities__container")
+            activities.innerHTML = "";
+
+            if (data.length === 0) {
+                activities.innerHTML = "<p class='no__activities'>Vous n'avez pas encore d'activités</p>";
+                return;
+            }
+            data.forEach(order => {
+                const activity = document.createElement('div');
+                activity.classList.add('activity');
+                activity.innerHTML = `
+                    <i class='bx bx-money-withdraw'></i>
+                    <div class="activity__info">
+                        <h2>Commande</h2>
+                        <p class="order_id">ID de la commande : ${order.order_id}</p>
+                        <p class="order_date">${convertDate(order.order_date)}</p>
+                        <p class="order_price">Prix : ${order.total_price} €</p>
+                    </div>
+                    `;
+                activities.appendChild(activity);
+            });
+        });
+}
 
 function loadSession() {
     fetch('http://localhost:3000/api/user', {
@@ -101,6 +141,7 @@ function loadSession() {
                     loginButton.href = "/profile";
                     loginBurgerButton.textContent = data.first_name;
                     loginBurgerButton.style.color = "#5f3dc4";
+                    getActivities(data.id_account);
                 } else {
                     loginButton.textContent = "Login";
                     loginButton.href = "/login";

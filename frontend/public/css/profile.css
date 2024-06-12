@@ -1,4 +1,3 @@
-
 /* Header catégorie */
 
 .profile__header {
@@ -14,6 +13,7 @@
 #activities {
     cursor: pointer;
 }
+
 /* Affichage du profile */
 
 
@@ -155,8 +155,7 @@
     height: 50vh;
 }
 
-
-.swiper-slide {
+.profile-slide {
     text-align: center;
     font-size: 18px;
     background: #090E16;
@@ -286,4 +285,39 @@
     #created__at {
         margin-bottom: 10px;
     }
+}
+
+/* Affichage des activités */
+
+.activities__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+    margin-top: 5vh;
+    overflow-y: auto;
+}
+
+.activity {
+    background-color: #5F3dc4;
+    width: auto;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+.activity i {
+    font-size: 100px;
+}
+
+.activity__info {
+    gap: 1vh;
+}
+
+.swiper-slide {
+    height: 80vh;
 }

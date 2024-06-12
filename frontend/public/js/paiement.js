@@ -1,8 +1,11 @@
+let idUser = null;
+
 const panierItems = JSON.parse(localStorage.getItem('panier')) || [];
 
 if (panierItems.length === 0) {
     window.location.href = "/shop";
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
@@ -23,7 +26,7 @@ function loadSession() {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            idUser = data.id_account;
             const loginButton = document.getElementById('login__button');
             const loginBurgerButton = document.getElementById('login__burger__button');
             if (data.first_name) {
@@ -74,11 +77,9 @@ async function proceedPayment() {
     const nameRegex = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ' -]*$/;
     const isNumeric = /^\d{16}$/.test(cardNumber);
     const isNumericCvc = /^\d{3}$/.test(cardCvc);
-    const isExpiration = /^(0[1-9]|1[0-2])\/\d{2}$/.test(cardExpiration)
+    const isExpiration = /^(0[1-9]|1[0-2])\/\d{2}$/.test(cardExpiration);
 
-    const amount = getTotalPrice();
-
-    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+    /*if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
         errorElement.textContent = "First name and last name must be valid";
         return;
     }
@@ -96,12 +97,67 @@ async function proceedPayment() {
     if (!isExpiration) {
         errorElement.textContent = "Expiration date must be MM/YY";
         return;
-    }
+    }*/
+
+    /* Ajout de la commande */
+
+    const address = document.getElementById('shippingAddress').value;
+    const amount = getTotalPrice();
+    const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    const paymentMethod = "Credit Card";
+    const status = "Paid";
+
+    const order = {
+        id_account: idUser,
+        address: address,
+        amount: amount,
+        date: date,
+        payment_method: paymentMethod,
+        status: status
+    };
+
+    let idOrder = null;
+    const response = await fetch('http://localhost:3000/api/order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+    }).then(response => response.json())
+        .then(data => {
+            console.log(data);
+            idOrder = data.order_id;
+        });
+
+    /* Ajout des produits de la commande */
+
+    panierItems.forEach(item => {
+        const orderItem = {
+            id_jersey: item.id_jersey,
+            id_order: idOrder,
+            size: item.size,
+            quantity: item.quantity
+        };
+
+        fetch('http://localhost:3000/api/orderItem', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderItem)
+        }).then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+    });
+
+    /* Affichage de la confirmation */
 
     paymentContainer.innerHTML = ``;
 
     const paymentSuccess = document.createElement('div');
     paymentSuccess.classList.add('payment__success');
+
 
     paymentSuccess.innerHTML = `
         <h1>Thank you ${firstName} for your purchase !</h1>

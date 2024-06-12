@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
-
+    const loginButton = document.getElementById('login__button');
+    loginButton.innerHTML = 'Login';
     loginForm.addEventListener('submit', async function (event) {
         const errorMessage = document.querySelector('#error__message');
         errorMessage.innerHTML = '';

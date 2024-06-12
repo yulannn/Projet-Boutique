@@ -1,4 +1,8 @@
-const apiPaymentKey = "ee7a45eb-9a7e-4f86-80fa-89016d1d8447"
+const panierItems = JSON.parse(localStorage.getItem('panier')) || [];
+
+if (panierItems.length === 0) {
+    window.location.href = "/shop";
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
@@ -6,8 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const paymentbutton = document.getElementById('paymentButton');
     paymentbutton.addEventListener('click', async () => {
-        console.log(proceedPayment(apiPaymentKey));
+        await proceedPayment()
     });
+
 
 });
 
@@ -51,18 +56,32 @@ function loadPanier() {
     amountPanier.textContent = "Amount : " + pricePanier + " €";
 }
 
-async function proceedPayment(token) {
+async function proceedPayment() {
+    const paymentContainer = document.querySelector('.payment__container');
+
     const errorElement = document.getElementById('error__message');
     errorElement.textContent = "";
 
     let cardNumber = document.getElementById('cardNumber').value;
     cardNumber = cardNumber.replace(/\s/g, '');
 
-    const isNumeric = /^\d{16}$/.test(cardNumber);
-    const isNumericCvc = /^\d{3}$/.test(cardNumber);
-    const cardExpiration = document.getElementById('cardExpiration').value;
     const cardCvc = document.getElementById('cardCvc').value;
+    const cardExpiration = document.getElementById('cardExpiration').value;
+
+    const firstName = document.getElementById('first__name').value;
+    const lastName = document.getElementById('last__name').value;
+
+    const nameRegex = /^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ' -]*$/;
+    const isNumeric = /^\d{16}$/.test(cardNumber);
+    const isNumericCvc = /^\d{3}$/.test(cardCvc);
+    const isExpiration = /^(0[1-9]|1[0-2])\/\d{2}$/.test(cardExpiration)
+
     const amount = getTotalPrice();
+
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+        errorElement.textContent = "First name and last name must be valid";
+        return;
+    }
 
     if (cardNumber.length !== 16 || !isNumeric) {
         errorElement.textContent = "Card number must be 16 digits";
@@ -74,33 +93,28 @@ async function proceedPayment(token) {
         return;
     }
 
-    const bodyData = {
-        "card": {
-            "number": "2525252525252525",
-            "expiration_date": "12/28",
-            "cvc": "123"
-        },
-        "payment_intent": {
-            "price": 8.00
-        }
-    }
-
-    console.log(bodyData)
-    const result = await fetch('https://challenge-js.ynovaix.com/payment', {
-        method: 'POST',
-        headers: {
-            Authorization: token,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(bodyData),
-    });
-
-    console.log(result);
-
-    if (!result.ok) {
-        const error = await result.json();
-        throw new Error(error.message);
+    if (!isExpiration) {
+        errorElement.textContent = "Expiration date must be MM/YY";
         return;
     }
-    return await result.json();
+
+    paymentContainer.innerHTML = ``;
+
+    const paymentSuccess = document.createElement('div');
+    paymentSuccess.classList.add('payment__success');
+
+    paymentSuccess.innerHTML = `
+        <h1>Thank you ${firstName} for your purchase !</h1>
+        <p>Check your <span id="profile__redirect">profile</span> to see more information</p>
+        <a href="/shop">Back to shop</a>
+    `;
+
+    paymentContainer.appendChild(paymentSuccess);
+
+    const profileRedirect = document.getElementById('profile__redirect');
+    profileRedirect.addEventListener('click', () => {
+        window.location.href = "/profile";
+    });
+
+    localStorage.removeItem('panier');
 }

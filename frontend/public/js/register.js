@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('registerForm');
 
+    const loginButton = document.getElementById('login__button');
+    loginButton.innerHTML = 'Login';
+
     registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 

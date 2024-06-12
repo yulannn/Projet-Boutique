@@ -222,3 +222,7 @@
         align-items: center;
     }
 }
+
+.recommanded__item {
+    text-align: center;
+}

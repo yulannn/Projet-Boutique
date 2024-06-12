@@ -97,3 +97,45 @@
     font-size: 1rem;
     margin-top: 1rem;
 }
+
+#panier__button {
+    display: None;
+}
+
+.empty__panier {
+    margin-top: 10rem;
+}
+
+/* Success page */
+
+.payment__success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10rem;
+}
+
+.payment__success h1 {
+    font-size: 3rem;
+}
+
+.payment__success p {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+.payment__success span {
+    color: #5F3dc4;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.payment__success a {
+    text-decoration: none;
+    color: white;
+    background-color: #5F3dc4;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 1rem;
+}

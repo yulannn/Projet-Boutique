@@ -47,6 +47,10 @@ app.get('/jersey/:id', (req, res) => {
     res.render('jersey', { id: req.params.id });
 });
 
+app.get('/order/:id', (req, res) => {
+    res.render('order', { id: req.params.id });
+});
+
 //Page 404
 app.use((req, res) => {
     res.status(404).render('404');

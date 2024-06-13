@@ -15,7 +15,9 @@ class ControllerOrder {
 
     static getAllOrders = (req, res) => {
         const id_account = req.query.id_account;
-        Order.getAllOrders(id_account, (err, result) => {
+        const order_id = req.query.order_id;
+
+        Order.getAllOrders(id_account, order_id, (err, result) => {
             if (err) {
                 res.status(500).send({ message: "Erreur lors de la récupération des commandes" });
                 return;

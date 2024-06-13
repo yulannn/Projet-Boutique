@@ -79,8 +79,8 @@ function displayJersey() {
             productInfosDiv.innerHTML = `
                     <h3>${jersey.name}</h3>
                     <p>${jersey.description}</p>
-                    <p>Matière : ${jersey.material}</p>
-                    <p>Couleur : ${jersey.color}</p>
+                    <p>Material : ${jersey.material}</p>
+                    <p>Color(s) : ${jersey.color}</p>
                 `;
             const productPriceDiv = document.querySelector(".product__price")
             productPriceDiv.innerHTML = `

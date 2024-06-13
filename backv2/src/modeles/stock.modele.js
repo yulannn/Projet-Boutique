@@ -31,6 +31,22 @@ class ModeleStock {
             res(true, { message: "not found" });
         });
     }
+
+    static removeFromStock(id_jersey, id_size, stock, res) {
+        let sqlQuery = db.format("UPDATE stock SET stock = stock - ? WHERE id_jersey = ? AND id_size = ?", [stock, id_jersey, id_size]);
+        db.query(sqlQuery, (err, result) => {
+            if (err) {
+                console.log(err)
+                res(true, err);
+                return;
+            }
+            if (result.affectedRows) {
+                res(false, result);
+                return;
+            }
+            res(true, { message: "not found" });
+        });
+    }
 }
 
 module.exports = ModeleStock;

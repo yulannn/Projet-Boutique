@@ -116,7 +116,7 @@
 button.valid__payment {
     color: white;
     padding: 5px 20px;
-    background-color: rgb(11, 236, 11);
+    background-color: #5F3dc4;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;

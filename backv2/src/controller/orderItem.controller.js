@@ -12,6 +12,18 @@ class ControllerOrderItem {
             res.status(201).send({ message: "Item ajoutée"});
         });
     }
+
+    static getOrderItem = (req, res) => {
+        const idOrder = req.query.order_id;
+
+        OrderItem.getOrderItem(idOrder, (err, result) => {
+            if (err) {
+                res.status(500).send({ message: "Erreur lors de la récupération des items de la commande" });
+                return;
+            }
+            res.status(200).send(result);
+        });
+    }
 }
 
 module.exports = ControllerOrderItem;

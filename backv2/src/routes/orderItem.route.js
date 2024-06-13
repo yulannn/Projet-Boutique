@@ -5,6 +5,8 @@ module.exports = (app) => {
 
     router.post('/orderItem', orderItem.addOrderItem);
 
+    router.get('/orderItem', orderItem.getOrderItem);
+
     app.use('/api', router);
 }
 

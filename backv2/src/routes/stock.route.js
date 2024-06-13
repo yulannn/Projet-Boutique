@@ -5,5 +5,7 @@ module.exports = (app) => {
 
     router.get('/stock', stock.getStock);
 
+    router.post('/stock', stock.removeStock);
+
     app.use('/api', router);
 }

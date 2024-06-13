@@ -84,7 +84,7 @@ function getProfile() {
 
             first__name.textContent = data.first_name + " " + data.last_name;
             email.textContent = data.email;
-            created__at.textContent = "Membre depuis le " + formatDate(data.created_at);
+            created__at.textContent = "Member since : " + formatDate(data.created_at);
         })
         .catch(error => console.error('Error fetching profile:', error));
 }
@@ -99,10 +99,14 @@ function getActivities(id_account) {
             const activities = document.querySelector(".activities__container")
             activities.innerHTML = "";
 
+            document.getElementById('total__orders').textContent = data.length;
+
             if (data.length === 0) {
-                activities.innerHTML = "<p class='no__activities'>Vous n'avez pas encore d'activités</p>";
+                activities.innerHTML = "<p class='no__activities'>You don't have orders yet</p>";
                 return;
             }
+
+
             data.forEach(order => {
                 const activity = document.createElement('div');
                 activity.classList.add('activity');
@@ -110,11 +114,14 @@ function getActivities(id_account) {
                     <i class='bx bx-money-withdraw'></i>
                     <div class="activity__info">
                         <h2>Commande</h2>
-                        <p class="order_id">ID de la commande : ${order.order_id}</p>
+                        <p class="order_id">Order ID : ${order.order_id}</p>
                         <p class="order_date">${convertDate(order.order_date)}</p>
-                        <p class="order_price">Prix : ${order.total_price} €</p>
+                        <p class="order_price">Price : ${order.total_price} €</p>
                     </div>
                     `;
+                activity.addEventListener('click', () => {
+                    window.location.href = `/order/${order.order_id}`;
+                });
                 activities.appendChild(activity);
             });
         });

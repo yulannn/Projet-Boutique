@@ -6,7 +6,6 @@ if (panierItems.length === 0) {
     window.location.href = "/shop";
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     loadSession();
     loadPanier();
@@ -24,7 +23,13 @@ function loadSession() {
     fetch('http://localhost:3000/api/user', {
         credentials: 'include'
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 401) {
+                window.location.href = "/login";
+                return;
+            }
+            return response.json();
+        })
         .then(data => {
             idUser = data.id_account;
             const loginButton = document.getElementById('login__button');
@@ -129,7 +134,14 @@ async function proceedPayment() {
             idOrder = data.order_id;
         });
 
-    /* Ajout des produits de la commande */
+    const sizeIds = {
+        "XS": 1,
+        "S": 2,
+        "M": 3,
+        "L": 4,
+        "XL": 5,
+        "XXL": 6
+    };
 
     panierItems.forEach(item => {
         const orderItem = {
@@ -138,6 +150,22 @@ async function proceedPayment() {
             size: item.size,
             quantity: item.quantity
         };
+
+        fetch('http://localhost:3000/api/stock', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id_jersey: item.id_jersey,
+                size: sizeIds[item.size],
+                quantity: item.quantity
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
 
         fetch('http://localhost:3000/api/orderItem', {
             method: 'POST',

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <link rel="stylesheet" href="/public/css/header.css">
+    <link rel="stylesheet" href="/public/css/panier.css">
+    <link rel="stylesheet" href="/public/css/order.css">
+</head>
+
+<body>
+
+<%- include('burger_menu.ejs') %>
+
+<%- include('panier.ejs') %>
+
+<main class="container">
+
+    <%- include('header.ejs') %>
+
+    <div class="back__button">
+        <a href="/profile">Back</a>
+    </div>
+
+    <div class="order__container">
+        <h1 class="order_title"></h1>
+    </div>
+
+    <div class="order__infos">
+        <div class="order__details"></div>
+        <h2>Items</h2>
+        <div class="order__items"></div>
+    </div>
+</main>
+<script src="/public/js/panier.js"></script>
+<script src="/public/js/burger.js"></script>
+<script src="/public/js/order.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html>

@@ -58,7 +58,7 @@ function openPanier() {
 
 
 function closePanier() {
-    panier.style.right = '-45%';
+    panier.style.right = '-100%';
     buttonPanier.style.color = 'white';
     buttonPanier.innerText = 'menu';
 }

@@ -1,12 +1,11 @@
 .panier__popup {
     display: flex;
     position: fixed;
-    right: -45%;
+    right: -100%;
     top: 0;
     width: 40%;
     height: 100vh;
     background-color: #090E16;
-    border-left: 1px solid #5F3dc4;
     text-align: center;
     z-index: 1000;
     transition: right 0.5s;
@@ -25,6 +24,7 @@
 
 .panier__popup__content {
     display: flex;
+    box-shadow: 0 0 10px 0 #5F3dc4;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
@@ -137,7 +137,13 @@ button.invalid__payment {
 
 
 @media only screen and (max-width: 431px) {
-    .panier__popup{
-        width:45%;
+    .panier__popup {
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .panier__popup__content {
+        border-left: none;
+        box-shadow: none;
     }
 }

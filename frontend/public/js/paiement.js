@@ -106,7 +106,7 @@ async function proceedPayment() {
 
     /* Ajout de la commande */
 
-    const address = document.getElementById('shippingAddress').value;
+    const address = document.getElementById('address').value;
     const amount = getTotalPrice();
     const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const paymentMethod = "Credit Card";

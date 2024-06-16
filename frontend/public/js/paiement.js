@@ -16,6 +16,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    const adresseInput = document.getElementById("address");
+    const adresseList = document.getElementById("adresse-list");
+
+    adresseInput.addEventListener("input", function() {
+        const query = adresseInput.value;
+
+        if (query.length > 2) {
+            fetch(`https://api-adresse.data.gouv.fr/search/?q=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const addresses = data.features;
+                    updateListItems(addresses);
+                })
+                .catch(error => console.error("Erreur lors de la récupération des adresses:", error));
+        } else {
+            clearListItems();
+        }
+    });
+
+    function updateListItems(addresses) {
+        clearListItems();
+        addresses.forEach(address => {
+            const listItem = document.createElement("li");
+            listItem.className = "list-item";
+            listItem.textContent = address.properties.label;
+            listItem.addEventListener("click", function() {
+                adresseInput.value = address.properties.label;
+                clearListItems();
+            });
+            adresseList.appendChild(listItem);
+        });
+    }
+
+    function clearListItems() {
+        adresseList.innerHTML = "";
+    }
+
 });
 
 
@@ -84,7 +121,7 @@ async function proceedPayment() {
     const isNumericCvc = /^\d{3}$/.test(cardCvc);
     const isExpiration = /^(0[1-9]|1[0-2])\/\d{2}$/.test(cardExpiration);
 
-    /*if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
         errorElement.textContent = "First name and last name must be valid";
         return;
     }
@@ -102,7 +139,7 @@ async function proceedPayment() {
     if (!isExpiration) {
         errorElement.textContent = "Expiration date must be MM/YY";
         return;
-    }*/
+    }
 
     /* Ajout de la commande */
 

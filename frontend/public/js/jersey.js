@@ -29,7 +29,7 @@ function loadStock(id) {
                 if (stock.id_size === id) {
                     const stockDiv = document.querySelector(".product__stock");
                     const addButton = document.querySelector("#add__button");
-                    if (stock.stock === 0) {
+                    if (stock.stock <= 0) {
                         stockDiv.textContent = "Out of stock";
                         stockDiv.style.color = "red";
                         addButton.className = '';

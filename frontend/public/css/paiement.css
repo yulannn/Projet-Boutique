@@ -142,22 +142,42 @@
 
 /* Adresse livraison */
 
-#address {
-    border-radius: 10px;
+.input {
+    padding: 10px;
     width: 100%;
-    padding: 8px;
     box-sizing: border-box;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-.autocomplete-suggestions {
+.input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+.list {
+    color: black;
+    width: 32%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 4px;
     max-height: 150px;
     overflow-y: auto;
-    background-color: #fff;
+    background-color: white;
+    position: absolute;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.autocomplete-suggestion {
-    padding: 8px;
+
+.list-item {
+    padding: 10px;
     cursor: pointer;
 }
-.autocomplete-suggestion:hover {
-    background-color: #e9e9e9;
+
+.list-item:hover {
+    background-color: #f0f0f0;
 }

@@ -57,5 +57,5 @@ Pour installer et exécuter ce projet sur votre machine locale, suivez les étap
 
 ## Auteurs
 
-- [yulannn]("https://github.com/yulannn/")
-- [romaindr]("https://github.com/romaingdr")
+- [yulannn](https://github.com/yulannn/)
+- [romaingdr](https://github.com/romaingdr)

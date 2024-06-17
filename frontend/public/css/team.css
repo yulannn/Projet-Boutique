@@ -184,3 +184,18 @@
 .swiper-pagination-bullet, .swiper-button-next, .swiper-button-prev {
     background: #000;
 }
+
+.swiper-container {
+    overflow: hidden;
+}
+
+
+#next-button,
+#previous-button {
+    position: absolute;
+    bottom: 10%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: white;
+    background-color: #090E16;
+}
